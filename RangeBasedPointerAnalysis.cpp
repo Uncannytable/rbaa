@@ -454,7 +454,7 @@ void RangedPointer::processGEP( RangedPointer* base,
         lower_range = lower_range 
           + Expr( *SI, 
             P->getSumBehind(base_ptr_primitive_layout, 
-              r.getLower().getConstant()) );
+              r.getLower().getInteger()) );
       }
       
       if(r.getUpper().isConstant())
@@ -462,7 +462,7 @@ void RangedPointer::processGEP( RangedPointer* base,
         higher_range = higher_range 
           + Expr( *SI, 
             P->getSumBehind(base_ptr_primitive_layout, 
-              r.getUpper().getConstant()) );
+              r.getUpper().getInteger()) );
       }
       else
       {
