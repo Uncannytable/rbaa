@@ -1,0 +1,6 @@
+# ignore compilation
+Release+Asserts/
+
+# ignore all files ending with ~
+*~
+
