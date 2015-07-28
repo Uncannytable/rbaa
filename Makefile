@@ -1,25 +1,9 @@
-##===--------------------- Makefile ------------------------*- Makefile -*-===##
-#
-#                     The LLVM Compiler Infrastructure
-#
-# This file is distributed under the University of Illinois Open Source
-# License. See LICENSE.TXT for details.
-#
+##======- lib/*/*/Makefile ------------------------------*- Makefile -*-======##
 ##===----------------------------------------------------------------------===##
 
-# Makefile for RangeBasedAnalysis passes
+LEVEL ?= ../../..
 
-# Path to top level of LLVM hierarchy
-LEVEL = ../../..
+all:
+	make -C SAGE LEVEL=../$(LEVEL)
+	./SAGE/bin/sage -sh -c "make -f Makefile.llvm LEVEL=$(LEVEL)"
 
-# Name of the library to build
-LIBRARYNAME = RangeBasedAliasAnalysis
-
-# Make the shared library become a loadable module so the tools can 
-# dlopen/dlsym on the resulting library.
-LOADABLE_MODULE = 1
-
-CXXFLAGS += -std=c++0x -fpermissive 
-
-# Include the makefile implementation stuff
-include $(LEVEL)/Makefile.common
