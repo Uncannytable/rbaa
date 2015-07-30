@@ -1,0 +1,18 @@
+digraph grafico {
+"call_0x2f8c8f0" [shape=square];
+"tmp_0x2f8c968" [shape=ellipse];
+"call_0x2f8c8f0" -> "tmp_0x2f8c968" [label="[0, 0]",color=red];
+"arrayidx1_0x2f8ca80" [shape=ellipse];
+"tmp_0x2f8c968" -> "arrayidx1_0x2f8ca80" [label="[1, 1]",color=red];
+"no_body_sum_0x2f8dff0" [shape=square];
+"arrayidx3_0x2f8eb30" [shape=ellipse];
+"tmp_0x2f8c968" -> "arrayidx3_0x2f8eb30" [label="[3, 5]",color=red];
+"arrayidx5_0x2f8eca0" [shape=ellipse];
+"tmp_0x2f8c968" -> "arrayidx5_0x2f8eca0" [label="[2, 2]",color=red];
+"argv_0x2f94850" [shape=square];
+"malloc_0x2f94d60" [shape=square];
+"i32* %1_0x59c1980" [shape=diamond];
+"arrayidx1_0x2f8ca80" -> "i32* %1_0x59c1980" [label="[0, 0]"];
+"i32* %0_0x5a5d490" [shape=diamond];
+"tmp_0x2f8c968" -> "i32* %0_0x5a5d490" [label="[0, 0]"];
+}

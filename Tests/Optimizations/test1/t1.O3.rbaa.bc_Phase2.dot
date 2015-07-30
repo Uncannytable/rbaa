@@ -1,0 +1,14 @@
+digraph grafico {
+"call_0x26d06c0" [shape=square];
+"tmp_0x26d0738" [shape=ellipse];
+"call_0x26d06c0" -> "tmp_0x26d0738" [label="[0, 0]",color=red];
+"arrayidx1_0x26d0850" [shape=ellipse];
+"call_0x26d06c0" -> "arrayidx1_0x26d0850" [label="[1, 1]",color=red];
+"argv_0x26d8850" [shape=square];
+"no_body_sum_0x26d9b90" [shape=square];
+"malloc_0x26d9db0" [shape=square];
+"i32* %0_0x50b5d40" [shape=diamond];
+"call_0x26d06c0" -> "i32* %0_0x50b5d40" [label="[0, 0]"];
+"i32* %1_0x5169000" [shape=diamond];
+"call_0x26d06c0" -> "i32* %1_0x5169000" [label="[1, 1]"];
+}
