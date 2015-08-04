@@ -133,3 +133,9 @@ alias analyses that it has now.
 Regards,
 
 Fernando
+
+
+
+
+Passes that optimize these examples:
+-gvn -dse 
