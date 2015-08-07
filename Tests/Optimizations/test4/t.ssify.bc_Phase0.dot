@@ -1,0 +1,31 @@
+digraph grafico {
+"printf_0x40a8bc0" [shape=square];
+"bar_0x40a8c90" [shape=square];
+"malloc_0x40b59a0" [shape=square];
+"foo_0x40b5db0" [shape=square];
+".str_0x40b6518" [shape=square];
+"i8* getelementptr inbounds ([3 x i8]* @.str, i32 0, i32 0)_0x40b6878" [shape=ellipse];
+".str_0x40b6518" -> "i8* getelementptr inbounds ([3 x i8]* @.str, i32 0, i32 0)_0x40b6878" [label="[0, 0]",color=red];
+"call_0x40b8c00" [shape=square];
+"tmp_0x40b8c78" [shape=ellipse];
+"call_0x40b8c00" -> "tmp_0x40b8c78" [label="[0, 0]",color=red];
+"add.ptr_0x40b8d00" [shape=ellipse];
+"tmp_0x40b8c78" -> "add.ptr_0x40b8d00" [label="[1, 1]",color=red];
+"add.ptr1_0x40b8d90" [shape=ellipse];
+"tmp_0x40b8c78" -> "add.ptr1_0x40b8d90" [label="[2, 2]",color=red];
+"a_0x40ba190" [shape=diamond];
+"add.ptr_0x40ba8f0" -> "a_0x40ba190" [label="[0, 0]"];
+"b_0x40ba1e0" [shape=diamond];
+"add.ptr1_0x40ba980" -> "b_0x40ba1e0" [label="[0, 0]"];
+"argv_0x40ba670" [shape=square];
+"call_0x40ba7f0" [shape=square];
+"tmp_0x40ba868" [shape=ellipse];
+"call_0x40ba7f0" -> "tmp_0x40ba868" [label="[0, 0]",color=red];
+"add.ptr_0x40ba8f0" [shape=ellipse];
+"tmp_0x40ba868" -> "add.ptr_0x40ba8f0" [label="[1, 1]",color=red];
+"add.ptr1_0x40ba980" [shape=ellipse];
+"tmp_0x40ba868" -> "add.ptr1_0x40ba980" [label="[2, 2]",color=red];
+"i8* %0_0x6b5f3c0" [shape=diamond];
+"i8* getelementptr inbounds ([3 x i8]* @.str, i32 0, i32 0)_0x40b6878" -> "i8* %0_0x6b5f3c0" [label="[0, 0]"];
+"i8* getelementptr inbounds ([3 x i8]* @.str, i32 0, i32 0)_0x40b6878" -> "i8* %0_0x6b5f3c0" [label="[0, 0]"];
+}

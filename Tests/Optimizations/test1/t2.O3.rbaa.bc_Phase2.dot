@@ -1,18 +1,20 @@
 digraph grafico {
-"call_0x2f8c8f0" [shape=square];
-"tmp_0x2f8c968" [shape=ellipse];
-"call_0x2f8c8f0" -> "tmp_0x2f8c968" [label="[0, 0]",color=red];
-"arrayidx1_0x2f8ca80" [shape=ellipse];
-"call_0x2f8c8f0" -> "arrayidx1_0x2f8ca80" [label="[1, 1]",color=red];
-"no_body_sum_0x2f8dff0" [shape=square];
-"arrayidx3_0x2f8eb30" [shape=ellipse];
-"call_0x2f8c8f0" -> "arrayidx3_0x2f8eb30" [label="[3, 5]",color=red];
-"arrayidx5_0x2f8eca0" [shape=ellipse];
-"call_0x2f8c8f0" -> "arrayidx5_0x2f8eca0" [label="[2, 2]",color=red];
-"argv_0x2f94850" [shape=square];
-"malloc_0x2f94d60" [shape=square];
-"i32* %1_0x59c1980" [shape=diamond];
-"call_0x2f8c8f0" -> "i32* %1_0x59c1980" [label="[1, 1]"];
-"i32* %0_0x5a5d490" [shape=diamond];
-"call_0x2f8c8f0" -> "i32* %0_0x5a5d490" [label="[0, 0]"];
+"arrayidx1_0x433b8d0" [shape=ellipse];
+"call_0x433bb10" -> "arrayidx1_0x433b8d0" [label="[4, 4]",color=red];
+"  %0 = bitcast i8* %arrayidx1 to i32*_0x433b948" [shape=ellipse];
+"call_0x433bb10" -> "  %0 = bitcast i8* %arrayidx1 to i32*_0x433b948" [label="[4, 4]",color=red];
+"call_0x433bb10" [shape=square];
+"tmp_0x433bb88" [shape=ellipse];
+"call_0x433bb10" -> "tmp_0x433bb88" [label="[0, 0]",color=red];
+"malloc_0x433d9a0" [shape=square];
+"arrayidx3_0x433dce0" [shape=ellipse];
+"call_0x433bb10" -> "arrayidx3_0x433dce0" [label="[3, 5]",color=red];
+"arrayidx5_0x433dde0" [shape=ellipse];
+"call_0x433bb10" -> "arrayidx5_0x433dde0" [label="[0, 2]",color=red];
+"argv_0x43439b0" [shape=square];
+"no_body_sum_0x4344cb0" [shape=square];
+"i32* %1_0x6bc55c0" [shape=diamond];
+"call_0x433bb10" -> "i32* %1_0x6bc55c0" [label="[4, 4]"];
+"i32* %0_0x6d3f9d0" [shape=diamond];
+"call_0x433bb10" -> "i32* %0_0x6d3f9d0" [label="[0, 0]"];
 }
