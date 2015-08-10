@@ -30,9 +30,37 @@ class RangeBasedAliasAnalysis : public FunctionPass, public AliasAnalysis
   
   bool eval(RangedPointer* rp1, RangedPointer* rp2);
   
-  virtual void getAnalysisUsage(AnalysisUsage &AU) const;
-  virtual bool runOnFunction(Function &F);
-  virtual AliasResult alias(const Location &LocA, const Location &LocB);
+  void getAnalysisUsage(AnalysisUsage &AU) const override;
+  bool runOnFunction(Function &F) override;
+  AliasResult alias(const Location &LocA, const Location &LocB) override;
+
+  
+
+
+  ModRefResult getModRefInfo(ImmutableCallSite CS, const Location &Loc) override;
+
+  ModRefResult getModRefInfo(ImmutableCallSite CS1,
+                             ImmutableCallSite CS2) override {
+    // The AliasAnalysis base class has some smarts, lets use them.
+    return AliasAnalysis::getModRefInfo(CS1, CS2);
+  }
+
+  /// pointsToConstantMemory - Chase pointers until we find a (constant
+  /// global) or not.
+  bool pointsToConstantMemory(const Location &Loc, bool OrLocal) override;
+
+  /// Get the location associated with a pointer argument of a callsite.
+  Location getArgLocation(ImmutableCallSite CS, unsigned ArgIdx,
+                          ModRefResult &Mask) override;
+
+  /// getModRefBehavior - Return the behavior when calling the given
+  /// call site.
+  ModRefBehavior getModRefBehavior(ImmutableCallSite CS) override;
+
+  /// getModRefBehavior - Return the behavior when calling the given function.
+  /// For use when the call site is not known.
+  ModRefBehavior getModRefBehavior(const Function *F) override;
+   
 };
 
 }

@@ -121,3 +121,43 @@ RangeBasedAliasAnalysis::alias(const Location &LocA, const Location &LocB)
     
   return AliasAnalysis::alias(LocA, LocB);
 }
+
+
+
+
+
+AliasAnalysis::ModRefResult 
+RangeBasedAliasAnalysis::getModRefInfo(ImmutableCallSite CS, const Location &Loc)
+{
+  return AliasAnalysis::getModRefInfo(CS, Loc);
+}
+
+/// pointsToConstantMemory - Chase pointers until we find a (constant
+/// global) or not.
+bool RangeBasedAliasAnalysis::pointsToConstantMemory(const Location &Loc, bool OrLocal)
+{
+  return AliasAnalysis::pointsToConstantMemory(Loc, OrLocal);
+}
+
+/// Get the location associated with a pointer argument of a callsite.
+AliasAnalysis::Location 
+RangeBasedAliasAnalysis::getArgLocation(ImmutableCallSite CS, unsigned ArgIdx, ModRefResult &Mask)
+{
+  return AliasAnalysis::getArgLocation(CS, ArgIdx, Mask);
+}
+/// getModRefBehavior - Return the behavior when calling the given
+/// call site.
+AliasAnalysis::ModRefBehavior 
+RangeBasedAliasAnalysis::getModRefBehavior(ImmutableCallSite CS)
+{
+  return AliasAnalysis::getModRefBehavior(CS);
+}
+
+/// getModRefBehavior - Return the behavior when calling the given function.
+/// For use when the call site is not known.
+AliasAnalysis::ModRefBehavior 
+RangeBasedAliasAnalysis::getModRefBehavior(const Function *F)
+{
+  return AliasAnalysis::getModRefBehavior(F);
+}
+
