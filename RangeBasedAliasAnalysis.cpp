@@ -21,8 +21,7 @@ bool RangeBasedAliasAnalysis::runOnFunction(Function &F)
 {
   InitializeAliasAnalysis(this);
   rbpa = &(getAnalysis<RangeBasedPointerAnalysis>());
-  errs() << "Y";
-  return false;
+ return false;
 }
 
 Expr higher(Expr e1, Expr e2)
@@ -87,8 +86,6 @@ RangeBasedAliasAnalysis::alias(const Location &LocA, const Location &LocB)
   p1 = LocA.Ptr;
   p2 = LocB.Ptr;
   
-  errs() << "X";
-
   RangedPointer* rp1 = rbpa->getRangedPointer(p1);
   RangedPointer* rp2 = rbpa->getRangedPointer(p2);
   
