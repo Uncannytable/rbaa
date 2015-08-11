@@ -136,13 +136,13 @@ RangeBasedAliasAnalysis::getModRefInfo(ImmutableCallSite CS, const Location &Loc
 /// global) or not.
 bool RangeBasedAliasAnalysis::pointsToConstantMemory(const Location &Loc, bool OrLocal)
 {
-  Value* ptr = Loc.Ptr;
+  const Value* ptr = Loc.Ptr;
   RangedPointer* rp = rbpa->getRangedPointer(ptr);
   
   for(auto i = rp->addr_begin(), ie = rp->addr_end(); i != ie; i++)
   {
     Address* ai = *i;
-    Value* V = ai->getBase()->getPointer();
+    const Value* V = ai->getBase()->getPointer();
     
     if (OrLocal && isa<AllocaInst>(V))
       continue;
