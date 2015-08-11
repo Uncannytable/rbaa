@@ -8,12 +8,12 @@
 namespace llvm
 {
 
-class RangeBasedAliasAnalysis : public FunctionPass, public AliasAnalysis
+class RangeBasedAliasAnalysis : public ModulePass, public AliasAnalysis
 {
 
   public:
   static char ID; // Class identification, replacement for typeinfo
-  RangeBasedAliasAnalysis() : FunctionPass(ID){}
+  RangeBasedAliasAnalysis() : ModulePass(ID){}
 
 	/// getAdjustedAnalysisPointer - This method is used when a pass implements
   /// an analysis interface through multiple inheritance.  If needed, it
@@ -31,7 +31,7 @@ class RangeBasedAliasAnalysis : public FunctionPass, public AliasAnalysis
   bool eval(RangedPointer* rp1, RangedPointer* rp2);
   
   void getAnalysisUsage(AnalysisUsage &AU) const override;
-  bool runOnFunction(Function &F) override;
+  bool runOnModule(Module &M) override;
   AliasResult alias(const Location &LocA, const Location &LocB) override;
 
   

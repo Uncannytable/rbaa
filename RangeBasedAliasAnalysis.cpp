@@ -17,11 +17,11 @@ void RangeBasedAliasAnalysis::getAnalysisUsage(AnalysisUsage &AU) const
   AU.setPreservesAll();
 }
 
-bool RangeBasedAliasAnalysis::runOnFunction(Function &F) 
+bool RangeBasedAliasAnalysis::runOnModule(Module &M) 
 {
   InitializeAliasAnalysis(this);
   rbpa = &(getAnalysis<RangeBasedPointerAnalysis>());
- return false;
+  return false;
 }
 
 Expr higher(Expr e1, Expr e2)
@@ -136,7 +136,27 @@ RangeBasedAliasAnalysis::getModRefInfo(ImmutableCallSite CS, const Location &Loc
 /// global) or not.
 bool RangeBasedAliasAnalysis::pointsToConstantMemory(const Location &Loc, bool OrLocal)
 {
-  return AliasAnalysis::pointsToConstantMemory(Loc, OrLocal);
+  Value* ptr = Loc.Ptr;
+  RangedPointer* rp = rbpa->getRangedPointer(ptr);
+  
+  for(auto i = rp->addr_begin(), ie = rp->addr_end(); i != ie; i++)
+  {
+    Address* ai = *i;
+    Value* V = ai->getBase()->getPointer();
+    
+    if (OrLocal && isa<AllocaInst>(V))
+      continue;
+
+    if (const GlobalVariable *GV = dyn_cast<GlobalVariable>(V)) {
+      if (!GV->isConstant()) {
+        return AliasAnalysis::pointsToConstantMemory(Loc, OrLocal);
+      }
+      continue;
+    }
+    return AliasAnalysis::pointsToConstantMemory(Loc, OrLocal);
+  }
+  
+  return true;
 }
 
 /// Get the location associated with a pointer argument of a callsite.
