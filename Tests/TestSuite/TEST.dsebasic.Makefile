@@ -27,6 +27,6 @@ Output/%.$(TEST).report.txt: Output/%.linked.rbc $(LOPT) \
 	@echo ">>> ========= '$(RELDIR)/$*' Program" >> $@
 	@echo "---------------------------------------------------------------" >> $@
 	@~/Ecosoc/llvm-3.5.0/lib/Ecosoc/llvm-sra/SAGE/bin/sage-opt -load SSIfy.so -mem2reg -instnamer -break-crit-edges -ssify -set 1000  $< -o $<.ssify.bc 2>>$@
-	@~/Ecosoc/llvm-3.5.0/lib/Ecosoc/llvm-sra/SAGE/bin/sage-opt -load Python.so -load SAGE.so -load SRA.so -load RangeBasedAliasAnalysis.so -redef -basicaa -gvn -dse -stats $<.ssify.bc -o $<.redef.bc 2>>$@ 
+	@~/Ecosoc/llvm-3.5.0/lib/Ecosoc/llvm-sra/SAGE/bin/sage-opt -load Python.so -load SAGE.so -load SRA.so -load RangeBasedAliasAnalysis.so -redef -basicaa -dse -stats $<.ssify.bc -o $<.redef.bc 2>>$@ 
 
 REPORT_DEPENDENCIES := ~/Ecosoc/llvm-3.5.0/lib/Ecosoc/llvm-sra/SAGE/bin/sage-opt
