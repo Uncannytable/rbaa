@@ -1,0 +1,27 @@
+##=== TEST.gvndsebasic.report - Report desc for sra tests ----*- perl -*-===##
+#
+# This file defines a report to be generated for the sra test.
+#
+##===----------------------------------------------------------------------------------------===##
+
+# Sort by name
+$SortCol = 1;
+$TrimRepeatedPrefix = 1;
+
+# These are the columns for the report.  The first entry is the header for the
+# column, the second is the regex to use to match the value.  Empty list create
+# seperators, and closures may be put in for custom processing.
+(
+# Name
+ ["Name" , '\'([^\']+)\' Program'],
+ [],
+ ["dse-InstRemoved", '([0-9.]+).*Number of other instrs removed'] 
+ ["dse-StoresDel", '([0-9.]+).*Number of stores deleted'],
+ ["gvn-InstDel", '([0-9.]+).*Number of instructions deleted'],
+ ["gvn-InstSimpl", '([0-9.]+).*Number of instructions simplified'],
+ ["gvn-LoadDel", '([0-9.]+).*Number of loads deleted'],
+ ["fullycached", '([0-9.]+).*Number of fully cached non-local ptr responses'],
+ ["uncached", '([0-9.]+).*Number of uncached non-local ptr responses'],
+ [],
+ );
+
