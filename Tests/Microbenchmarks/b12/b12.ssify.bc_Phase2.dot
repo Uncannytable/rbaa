@@ -1,0 +1,27 @@
+digraph grafico {
+"malloc_0x2ef3bc0" [shape=square];
+"benc_L_0x2ef3cd0" [shape=egg];
+"add.ptr1_0x2f04160" [shape=ellipse];
+"v_0x2f0ba00" -> "add.ptr1_0x2f04160" [label="[40, 40]",color=red];
+"i.0_0x2f04230" [shape=diamond];
+"v_0x2f0ba00" -> "i.0_0x2f04230" [label="*[0, 4]"];
+"SSIfy_sigma_0x2f04460" [shape=diamond];
+"v_0x2f0ba00" -> "SSIfy_sigma_0x2f04460" [label="*[0, 3]"];
+"incdec.ptr_0x2f04580" [shape=ellipse];
+"v_0x2f0ba00" -> "incdec.ptr_0x2f04580" [label="*[1, 4]",color=red];
+"SSIfy_sigma3_0x2f04650" [shape=diamond];
+"v_0x2f0ba00" -> "SSIfy_sigma3_0x2f04650" [label="*[4, 4]"];
+"i.1_0x2f04750" [shape=diamond];
+"v_0x2f0ba00" -> "i.1_0x2f04750" [label="*[4, 40]"];
+"SSIfy_sigma5_0x2f04ac0" [shape=diamond];
+"v_0x2f0ba00" -> "SSIfy_sigma5_0x2f04ac0" [label="*[4, 39]"];
+"incdec.ptr5_0x2f04c10" [shape=ellipse];
+"v_0x2f0ba00" -> "incdec.ptr5_0x2f04c10" [label="*[5, 40]",color=red];
+"argv_0x2f051f0" [shape=square];
+"i32 (i32, ...)* bitcast (i32 (...)* @benc_L to i32 (i32, ...)*)_0x2f05328" [shape=ellipse];
+"benc_L_0x2ef3cd0" -> "i32 (i32, ...)* bitcast (i32 (...)* @benc_L to i32 (i32, ...)*)_0x2f05328" [label="[0, 0]",color=red];
+"call_0x2f05430" [shape=square];
+"v_0x2f0ba00" [shape=egg];
+"add.ptr_0x2f0ba80" [shape=ellipse];
+"v_0x2f0ba00" -> "add.ptr_0x2f0ba80" [label="[4, 4]",color=red];
+}

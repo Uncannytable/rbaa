@@ -1,0 +1,30 @@
+SRA: runOnModule: bench_D
+SRA: runOnModule: main
+  %tmp1 = inttoptr i64 %conv to i32* -> Unknown Value
+NUMBER OF UNKNOWN POINTERS: 1
+26 Instrucoes
+8 Ponteiros
+4.339000e-03 Tempo
+===-------------------------------------------------------------------------===
+                          ... Statistics Collected ...
+===-------------------------------------------------------------------------===
+
+ 1 gvn       - Number of blocks merged
+ 4 gvn       - Number of instructions deleted
+ 4 gvn       - Number of instructions simplified
+ 1 instcount - Number of Add insts
+ 6 instcount - Number of Br insts
+ 2 instcount - Number of Call insts
+ 1 instcount - Number of GetElementPtr insts
+ 2 instcount - Number of ICmp insts
+ 1 instcount - Number of IntToPtr insts
+ 1 instcount - Number of PHI insts
+ 1 instcount - Number of PtrToInt insts
+ 2 instcount - Number of Ret insts
+ 2 instcount - Number of SExt insts
+ 2 instcount - Number of Store insts
+ 8 instcount - Number of basic blocks
+21 instcount - Number of instructions (of all types)
+ 5 instcount - Number of memory instructions
+ 2 instcount - Number of non-external functions
+

@@ -1,0 +1,13 @@
+digraph grafico {
+"bench_D_0x324de80" [shape=square];
+"malloc_0x324dfa0" [shape=square];
+"argv_0x3250d40" [shape=square];
+"arrayidx_0x3251500" [shape=ellipse];
+"v_0x32587b0" -> "arrayidx_0x3251500" [label="[0, 0]",color=red];
+"arrayidx2_0x3251800" [shape=ellipse];
+"v_0x32587b0" -> "arrayidx2_0x3251800" [label="[bench_D_N + 1, bench_D_M]",color=red];
+"call_0x3251f60" [shape=square];
+"tmp1_0x32520b8" [shape=egg];
+"v_0x32587b0" [shape=diamond];
+"tmp1_0x32520b8" -> "v_0x32587b0" [label="[0, 0]"];
+}

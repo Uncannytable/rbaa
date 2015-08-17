@@ -1,0 +1,25 @@
+digraph grafico {
+"malloc_0x4115a10" [shape=square];
+"benc_G_0x4116160" [shape=egg];
+"x_0x4119088" [shape=ellipse];
+"d_0x4120bc8" -> "x_0x4119088" [label="[0, 0]",color=red];
+"x1_0x4119198" [shape=ellipse];
+"s_0x4120990" -> "x1_0x4119198" [label="[0, 0]",color=red];
+"y_0x41192c8" [shape=ellipse];
+"d_0x4120bc8" -> "y_0x41192c8" [label="[1, 1]",color=red];
+"y2_0x41193d8" [shape=ellipse];
+"s_0x4120990" -> "y2_0x41193d8" [label="[1, 1]",color=red];
+"argv_0x4119750" [shape=square];
+"i32 (%struct.point*, i64, ...)* bitcast (i32 (...)* @benc_G to i32 (%struct.point*, i64, ...)*)_0x4119888" [shape=ellipse];
+"benc_G_0x4116160" -> "i32 (%struct.point*, i64, ...)* bitcast (i32 (...)* @benc_G to i32 (%struct.point*, i64, ...)*)_0x4119888" [label="[0, 0]",color=red];
+"z_0x4119978" [shape=square];
+"call_0x4119a00" [shape=square];
+"tmp_0x4119a78" [shape=ellipse];
+"call_0x4119a00" -> "tmp_0x4119a78" [label="[0, 0]",color=red];
+"tmp1_0x4119ae8" [shape=ellipse];
+"z_0x4119978" -> "tmp1_0x4119ae8" [label="[0, 0]",color=red];
+"s_0x4120990" [shape=egg];
+"d_0x4120bc8" [shape=square];
+"tmp_0x4120c38" [shape=ellipse];
+"d_0x4120bc8" -> "tmp_0x4120c38" [label="[0, 0]",color=red];
+}

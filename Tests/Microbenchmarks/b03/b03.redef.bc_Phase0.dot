@@ -1,0 +1,30 @@
+digraph grafico {
+"bench_C_0x3254b90" [shape=square];
+"tmp1_0x3257bc8" [shape=ellipse];
+"tmp_0x3257d08" -> "tmp1_0x3257bc8" [label="[0, 0]",color=red];
+"tmp_0x3257d08" [shape=ellipse];
+"src_0x325f988" -> "tmp_0x3257d08" [label="[0, 0]",color=red];
+"s_0x3257df8" [shape=ellipse];
+"src_0x325f988" -> "s_0x3257df8" [label="[0, 0]",color=red];
+"tmp2_0x3257fc8" [shape=ellipse];
+"tmp_0x3257d08" -> "tmp2_0x3257fc8" [label="[1, 1]",color=red];
+"v_0x3258678" [shape=ellipse];
+"src_0x325f988" -> "v_0x3258678" [label="[2, 2]",color=red];
+"tmp4_0x32586e8" [shape=egg];
+"arrayidx_0x3258770" [shape=ellipse];
+"tmp4_0x32586e8" -> "arrayidx_0x3258770" [label="[0, oo]",color=red];
+"acc_0x3258888" [shape=ellipse];
+"src_0x325f988" -> "acc_0x3258888" [label="[1, 1]",color=red];
+"argv_0x3258ef0" [shape=square];
+"y_0x3258fd8" [shape=square];
+"tmp_0x32593d8" [shape=ellipse];
+"y_0x3258fd8" -> "tmp_0x32593d8" [label="[0, 0]",color=red];
+"tmp1_0x3259478" [shape=ellipse];
+"tmp_0x32593d8" -> "tmp1_0x3259478" [label="[0, 0]",color=red];
+"tmp3_0x3259588" [shape=ellipse];
+"tmp_0x32593d8" -> "tmp3_0x3259588" [label="[1, 1]",color=red];
+"tmp4_0x32595f8" [shape=egg];
+"src.coerce1_0x325f920" [shape=diamond];
+"tmp4_0x32595f8" -> "src.coerce1_0x325f920" [label="[0, 0]"];
+"src_0x325f988" [shape=square];
+}

@@ -1,0 +1,29 @@
+digraph grafico {
+"malloc_0x2ef3bc0" [shape=square];
+"benc_L_0x2ef3cd0" [shape=egg];
+"add.ptr1_0x2f04160" [shape=ellipse];
+"v_0x2f0ba00" -> "add.ptr1_0x2f04160" [label="[40, 40]",color=red];
+"i.0_0x2f04230" [shape=diamond];
+"v_0x2f0ba00" -> "i.0_0x2f04230" [label="[0, 0]"];
+"incdec.ptr_0x2f04580" -> "i.0_0x2f04230" [label="[0, 0]"];
+"SSIfy_sigma_0x2f04460" [shape=diamond];
+"i.0_0x2f04230" -> "SSIfy_sigma_0x2f04460" [label="[0, 0]N{<, 0x2f0ba80+[0, 0]]}"];
+"incdec.ptr_0x2f04580" [shape=ellipse];
+"SSIfy_sigma_0x2f04460" -> "incdec.ptr_0x2f04580" [label="[1, 1]",color=red];
+"SSIfy_sigma3_0x2f04650" [shape=diamond];
+"i.0_0x2f04230" -> "SSIfy_sigma3_0x2f04650" [label="[0, 0]N{>=, 0x2f0ba80+[0, 0]]}"];
+"i.1_0x2f04750" [shape=diamond];
+"incdec.ptr5_0x2f04c10" -> "i.1_0x2f04750" [label="[0, 0]"];
+"SSIfy_sigma3_0x2f04650" -> "i.1_0x2f04750" [label="[0, 0]"];
+"SSIfy_sigma5_0x2f04ac0" [shape=diamond];
+"i.1_0x2f04750" -> "SSIfy_sigma5_0x2f04ac0" [label="[0, 0]N{<, 0x2f04160+[0, 0]]}"];
+"incdec.ptr5_0x2f04c10" [shape=ellipse];
+"SSIfy_sigma5_0x2f04ac0" -> "incdec.ptr5_0x2f04c10" [label="[1, 1]",color=red];
+"argv_0x2f051f0" [shape=square];
+"i32 (i32, ...)* bitcast (i32 (...)* @benc_L to i32 (i32, ...)*)_0x2f05328" [shape=ellipse];
+"benc_L_0x2ef3cd0" -> "i32 (i32, ...)* bitcast (i32 (...)* @benc_L to i32 (i32, ...)*)_0x2f05328" [label="[0, 0]",color=red];
+"call_0x2f05430" [shape=square];
+"v_0x2f0ba00" [shape=egg];
+"add.ptr_0x2f0ba80" [shape=ellipse];
+"v_0x2f0ba00" -> "add.ptr_0x2f0ba80" [label="[4, 4]",color=red];
+}
