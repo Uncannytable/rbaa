@@ -1128,7 +1128,7 @@ void RangeBasedPointerAnalysis::PreNarrowing()
 void RangeBasedPointerAnalysis::getAnalysisUsage(AnalysisUsage &AU) const
 {
   AU.setPreservesAll();
-  AU.addRequired<RangeAnalysis>();
+  AU.addRequired<SymbolicRangeAnalysis>();
 }
 char RangeBasedPointerAnalysis::ID = 0;
 static RegisterPass<RangeBasedPointerAnalysis> X("range-based-pa",
@@ -1143,10 +1143,17 @@ bool RangeBasedPointerAnalysis::runOnModule(Module &M)
   int ninst = 0;
   int npointers = 0;
 
-  RangeAnalysis &ra = getAnalysis<RangeAnalysis>();
-  SI = &(ra.getSI());
+	RangeAnalysis* ra;
+	for (auto F = M.begin(), Fe = M.end(); F != Fe; F++)
+  {
+  	if(F->begin() != F->end())
+  		ra = &(getAnalysis<RangeAnalysis>(*F));
+  }
+  SI = &(ra->getSI());
   P = new Primitives();
-  RA = &ra;
+  RA = ra;
+  
+  
   
   std::cout << "Gathering pointers\n";
   

@@ -1,0 +1,31 @@
+digraph grafico {
+"foo_0x3e4fbc0" [shape=square];
+"prinf_0x3e4fc90" [shape=egg];
+"arrayidx2_0x3e5d3e0" [shape=ellipse];
+"tmp1_0x3e61f48" -> "arrayidx2_0x3e5d3e0" [label="[1, 1]",color=red];
+".str_0x3e5d5c8" [shape=square];
+"malloc_0x3e5d640" [shape=square];
+"v_0x3e5d8b0" [shape=diamond];
+"tmp1_0x3e61f48" -> "v_0x3e5d8b0" [label="[0, 0]"];
+"i8* getelementptr inbounds ([3 x i8]* @.str, i32 0, i32 0)_0x3e5fa98" [shape=ellipse];
+".str_0x3e5d5c8" -> "i8* getelementptr inbounds ([3 x i8]* @.str, i32 0, i32 0)_0x3e5fa98" [label="[0, 0]",color=red];
+"i32 (i8*, i32, ...)* bitcast (i32 (...)* @prinf to i32 (i8*, i32, ...)*)_0x3e5fb88" [shape=ellipse];
+"prinf_0x3e4fc90" -> "i32 (i8*, i32, ...)* bitcast (i32 (...)* @prinf to i32 (i8*, i32, ...)*)_0x3e5fb88" [label="[0, 0]",color=red];
+"arrayidx_0x3e5fce0" [shape=ellipse];
+"tmp1_0x3e61f48" -> "arrayidx_0x3e5fce0" [label="[0, 0]",color=red];
+"arrayidx4_0x3e60ee0" [shape=ellipse];
+"tmp1_0x3e61f48" -> "arrayidx4_0x3e60ee0" [label="[0, 0]",color=red];
+"v_0x3e612b0" [shape=diamond];
+"tmp2_0x3e620b8" -> "v_0x3e612b0" [label="[0, 0]"];
+"arrayidx_0x3e614e0" [shape=ellipse];
+"tmp2_0x3e620b8" -> "arrayidx_0x3e614e0" [label="[bar_a, bar_a]",color=red];
+"arrayidx2_0x3e61670" [shape=ellipse];
+"tmp2_0x3e620b8" -> "arrayidx2_0x3e61670" [label="[bar_b, bar_b]",color=red];
+"arrayidx4_0x3e61800" [shape=ellipse];
+"tmp2_0x3e620b8" -> "arrayidx4_0x3e61800" [label="[bar_a, bar_a]",color=red];
+"argv_0x3e61ca0" [shape=square];
+"call_0x3e61df0" [shape=square];
+"tmp1_0x3e61f48" [shape=egg];
+"tmp2_0x3e620b8" [shape=egg];
+"bar_0x3e6a9d0" [shape=square];
+}
