@@ -4,7 +4,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 1
 23 Instrucoes
 8 Ponteiros
-6.422130e-01 Tempo
+8.545160e-01 Tempo
 Function: bench_A: 3 pointers, 0 call sites
   NoAlias:	i32* %a, i32* %arrayidx
   NoAlias:	i32* %a, i32* %arrayidx3
@@ -40,7 +40,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 1
 28 Instrucoes
 8 Ponteiros
-6.756190e-01 Tempo
+9.051880e-01 Tempo
 Function: bench_B: 3 pointers, 0 call sites
   PartialAlias:	i32* %arrayidx, i32* %v
   NoAlias:	i32* %arrayidx3, i32* %v
@@ -75,7 +75,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 2
 34 Instrucoes
 17 Ponteiros
-6.331730e-01 Tempo
+8.468490e-01 Tempo
 Function: bench_C: 10 pointers, 0 call sites
   NoAlias:	%struct.array* %src, i32* %src.coerce1
   NoAlias:	i32* %src.coerce1, { i64, i32* }* %tmp
@@ -161,13 +161,13 @@ SRA: runOnModule: bench_D
 SRA: runOnModule: main
   %tmp1 = inttoptr i64 %conv to i32* -> Unknown Value
 NUMBER OF UNKNOWN POINTERS: 1
-26 Instrucoes
+27 Instrucoes
 8 Ponteiros
-6.588410e-01 Tempo
+8.847880e-01 Tempo
 Function: bench_D: 3 pointers, 0 call sites
-  MustAlias:	i32* %arrayidx, i32* %v
-  PartialAlias:	i32* %arrayidx2, i32* %v
-  PartialAlias:	i32* %arrayidx, i32* %arrayidx2
+  PartialAlias:	i32* %arrayidx, i32* %v
+  PartialAlias:	i32* %arrayidx3, i32* %v
+  PartialAlias:	i32* %arrayidx, i32* %arrayidx3
 Function: main: 3 pointers, 2 call sites
   NoAlias:	i8* %call, i8** %argv
   MayAlias:	i32* %tmp1, i8** %argv
@@ -184,9 +184,9 @@ Function: main: 3 pointers, 2 call sites
   6 Total Alias Queries Performed
   1 no alias responses (16.6%)
   2 may alias responses (33.3%)
-  2 partial alias responses (33.3%)
-  1 must alias responses (16.6%)
-  Alias Analysis Evaluator Pointer Alias Summary: 16%/33%/33%/16%
+  3 partial alias responses (50.0%)
+  0 must alias responses (0.0%)
+  Alias Analysis Evaluator Pointer Alias Summary: 16%/33%/50%/0%
   8 Total ModRef Queries Performed
   0 no mod/ref responses (0.0%)
   0 mod responses (0.0%)
@@ -199,7 +199,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 1
 20 Instrucoes
 8 Ponteiros
-6.342790e-01 Tempo
+8.483610e-01 Tempo
 Function: bench_E: 3 pointers, 0 call sites
   PartialAlias:	i32* %arrayidx, i32* %v
   PartialAlias:	i32* %arrayidx5, i32* %v
@@ -234,7 +234,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 2
 32 Instrucoes
 11 Ponteiros
-6.607270e-01 Tempo
+8.561840e-01 Tempo
 Function: bench_F: 7 pointers, 0 call sites
   PartialAlias:	i32* %arrayidx, i32* %v
   PartialAlias:	i32* %arrayidx2, i32* %v
@@ -287,7 +287,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 1
 19 Instrucoes
 14 Ponteiros
-6.595460e-01 Tempo
+8.551680e-01 Tempo
 Function: bench_G: 7 pointers, 0 call sites
   NoAlias:	%struct.point* %d, %struct.point* %s
   NoAlias:	%struct.point* %s, i64* %tmp
@@ -360,7 +360,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 2
 25 Instrucoes
 11 Ponteiros
-6.705410e-01 Tempo
+9.034160e-01 Tempo
 Function: bench_H: 4 pointers, 0 call sites
   MayAlias:	i32* %d, i32* %s
   MayAlias:	i32* %arrayidx, i32* %d
@@ -419,7 +419,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 3
 39 Instrucoes
 12 Ponteiros
-7.429250e-01 Tempo
+9.691200e-01 Tempo
 Function: bench_I: 7 pointers, 0 call sites
   PartialAlias:	i32** %arrayidx, i32** %v
   MayAlias:	i32* %tmp, i32** %v
@@ -473,7 +473,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 1
 34 Instrucoes
 9 Ponteiros
-6.424420e-01 Tempo
+8.479870e-01 Tempo
 Function: bench_J: 4 pointers, 0 call sites
   PartialAlias:	i8* %arrayidx, i8* %p
   NoAlias:	i8* %arrayidx2, i8* %p
@@ -512,7 +512,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 1
 32 Instrucoes
 12 Ponteiros
-6.393390e-01 Tempo
+8.699460e-01 Tempo
 Function: bench_K: 7 pointers, 2 call sites
   NoAlias:	i8* %call, i8* %v
   NoAlias:	i8* %call1, i8* %v
@@ -581,7 +581,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 2
 24 Instrucoes
 14 Ponteiros
-6.434480e-01 Tempo
+8.564100e-01 Tempo
 Function: bench_L: 10 pointers, 0 call sites
   NoAlias:	i32* %add.ptr, i32* %v
   NoAlias:	i32* %add.ptr1, i32* %v

@@ -138,9 +138,9 @@ Function: main: 6 pointers, 1 call sites
   2 mod & ref responses (33.3%)
   Alias Analysis Evaluator Mod/Ref Summary: 66%/0%/0%/33%
 Function: bench_D: 3 pointers, 0 call sites
-  MustAlias:	i32* %arrayidx, i32* %v
-  PartialAlias:	i32* %arrayidx2, i32* %v
-  PartialAlias:	i32* %arrayidx, i32* %arrayidx2
+  PartialAlias:	i32* %arrayidx, i32* %v
+  PartialAlias:	i32* %arrayidx3, i32* %v
+  PartialAlias:	i32* %arrayidx, i32* %arrayidx3
 Function: main: 3 pointers, 2 call sites
   NoAlias:	i8* %call, i8** %argv
   MayAlias:	i32* %tmp1, i8** %argv
@@ -157,9 +157,9 @@ Function: main: 3 pointers, 2 call sites
   6 Total Alias Queries Performed
   1 no alias responses (16.6%)
   2 may alias responses (33.3%)
-  2 partial alias responses (33.3%)
-  1 must alias responses (16.6%)
-  Alias Analysis Evaluator Pointer Alias Summary: 16%/33%/33%/16%
+  3 partial alias responses (50.0%)
+  0 must alias responses (0.0%)
+  Alias Analysis Evaluator Pointer Alias Summary: 16%/33%/50%/0%
   8 Total ModRef Queries Performed
   0 no mod/ref responses (0.0%)
   0 mod responses (0.0%)
