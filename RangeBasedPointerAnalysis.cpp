@@ -552,6 +552,10 @@ bool RangeBasedPointerAnalysis::runOnModule(Module &M)
   DEBUG_WITH_TYPE("dot_graphs", printDOT(M, std::string("_Phase0")));
   
   /// Local analysis
+  for(auto i : RangedPointers)
+  {
+    i.second->getUniquePath();
+  }
   
   DEBUG_WITH_TYPE("dot_graphs", printDOT(M, std::string("_Phase1")));
   /// Global Analysis

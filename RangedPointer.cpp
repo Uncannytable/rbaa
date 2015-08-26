@@ -424,3 +424,27 @@ bool RangedPointer::isEvil()
   return false;
 }
 
+void RangedPointer::getUniquePath()
+{
+  RangedPointer* current = this;
+  int index = 0;
+  Range* range = new Range(Expr(*SI, 0),Expr(*SI, 0));
+  while(true)
+  {
+    Path[current] = std::pair<int, Range*>(index, range);
+    if(current->Addresses.size() == 1)
+    {
+      Address* addr = *(current->Addresses.begin());
+      current = addr->getBase();
+      index++;
+      range = new Range(range->getLower()+addr->getOffset()->getLower(),
+        range->getUpper()+addr->getOffset()->getUpper()); 
+    }
+    else
+    {
+      LocalTree = current;
+      break;
+    }
+  }
+}
+

@@ -16,6 +16,8 @@
 #define __RANGED_POINTER_H__
 
 #include <set>
+#include <map>
+#include <utility>
 
 namespace llvm {
 
@@ -66,6 +68,11 @@ class RangedPointer
   std::set<Address*>::iterator bases_end();
   void print();
   bool isEvil();
+  
+  //function and structures for the local analysis
+  RangedPointer* LocalTree;
+  std::map<RangedPointer*, std::pair<int, Range*> > Path;
+  void getUniquePath();
 };
 
 }
