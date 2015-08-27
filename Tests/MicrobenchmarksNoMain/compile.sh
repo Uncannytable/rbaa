@@ -1,0 +1,25 @@
+#!/bin/bash
+../compile.sh b01/b01
+../compile.sh b02/b02
+../compile.sh b03/b03
+../compile.sh b04/b04
+../compile.sh b05/b05
+../compile.sh b06/b06
+../compile.sh b07/b07
+../compile.sh b08/b08
+../compile.sh b09/b09
+../compile.sh b10/b10
+../compile.sh b11/b11
+../compile.sh b12/b12
+../rbaa.sh b01/b01
+../rbaa.sh b02/b02
+../rbaa.sh b03/b03
+../rbaa.sh b04/b04
+../rbaa.sh b05/b05
+../rbaa.sh b06/b06
+../rbaa.sh b07/b07
+../rbaa.sh b08/b08
+../rbaa.sh b09/b09
+../rbaa.sh b10/b10
+../rbaa.sh b11/b11
+../rbaa.sh b12/b12
