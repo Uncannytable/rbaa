@@ -4,7 +4,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 1
 23 Instrucoes
 8 Ponteiros
-8.545160e-01 Tempo
+8.563840e-01 Tempo
 Function: bench_A: 3 pointers, 0 call sites
   NoAlias:	i32* %a, i32* %arrayidx
   NoAlias:	i32* %a, i32* %arrayidx3
@@ -38,13 +38,13 @@ SRA: runOnModule: bench_B
 SRA: runOnModule: main
   %tmp1 = inttoptr i64 %conv to i32* -> Unknown Value
 NUMBER OF UNKNOWN POINTERS: 1
-28 Instrucoes
+26 Instrucoes
 8 Ponteiros
-9.051880e-01 Tempo
+9.066400e-01 Tempo
 Function: bench_B: 3 pointers, 0 call sites
-  PartialAlias:	i32* %arrayidx, i32* %v
-  NoAlias:	i32* %arrayidx3, i32* %v
-  NoAlias:	i32* %arrayidx, i32* %arrayidx3
+  PartialAlias:	i32* %add.ptr, i32* %v
+  NoAlias:	i32* %add.ptr1, i32* %v
+  NoAlias:	i32* %add.ptr, i32* %add.ptr1
 Function: main: 3 pointers, 2 call sites
   NoAlias:	i8* %call, i8** %argv
   MayAlias:	i32* %tmp1, i8** %argv
@@ -75,7 +75,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 2
 34 Instrucoes
 17 Ponteiros
-8.468490e-01 Tempo
+8.633640e-01 Tempo
 Function: bench_C: 10 pointers, 0 call sites
   NoAlias:	%struct.array* %src, i32* %src.coerce1
   NoAlias:	i32* %src.coerce1, { i64, i32* }* %tmp
@@ -163,7 +163,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 1
 27 Instrucoes
 8 Ponteiros
-8.847880e-01 Tempo
+8.902200e-01 Tempo
 Function: bench_D: 3 pointers, 0 call sites
   PartialAlias:	i32* %arrayidx, i32* %v
   PartialAlias:	i32* %arrayidx3, i32* %v
@@ -197,13 +197,13 @@ SRA: runOnModule: bench_E
 SRA: runOnModule: main
   %tmp1 = inttoptr i64 %conv to i32* -> Unknown Value
 NUMBER OF UNKNOWN POINTERS: 1
-20 Instrucoes
+21 Instrucoes
 8 Ponteiros
-8.483610e-01 Tempo
+8.600940e-01 Tempo
 Function: bench_E: 3 pointers, 0 call sites
   PartialAlias:	i32* %arrayidx, i32* %v
-  PartialAlias:	i32* %arrayidx5, i32* %v
-  PartialAlias:	i32* %arrayidx, i32* %arrayidx5
+  NoAlias:	i32* %arrayidx2, i32* %v
+  NoAlias:	i32* %arrayidx, i32* %arrayidx2
 Function: main: 3 pointers, 2 call sites
   NoAlias:	i8* %call, i8** %argv
   MayAlias:	i32* %tmp1, i8** %argv
@@ -218,11 +218,11 @@ Function: main: 3 pointers, 2 call sites
   Both ModRef:   %call1 = call i32 @bench_E(i32* %tmp1, i32 %argc) <->   %call = call noalias i8* @malloc(i64 400) #2
 ===== Alias Analysis Evaluator Report =====
   6 Total Alias Queries Performed
-  1 no alias responses (16.6%)
+  3 no alias responses (50.0%)
   2 may alias responses (33.3%)
-  3 partial alias responses (50.0%)
+  1 partial alias responses (16.6%)
   0 must alias responses (0.0%)
-  Alias Analysis Evaluator Pointer Alias Summary: 16%/33%/50%/0%
+  Alias Analysis Evaluator Pointer Alias Summary: 50%/33%/16%/0%
   8 Total ModRef Queries Performed
   0 no mod/ref responses (0.0%)
   0 mod responses (0.0%)
@@ -231,10 +231,10 @@ Function: main: 3 pointers, 2 call sites
   Alias Analysis Evaluator Mod/Ref Summary: 0%/0%/0%/100%
 SRA: runOnModule: bench_F
 SRA: runOnModule: main
-NUMBER OF UNKNOWN POINTERS: 2
+NUMBER OF UNKNOWN POINTERS: 1
 32 Instrucoes
 11 Ponteiros
-8.561840e-01 Tempo
+8.645370e-01 Tempo
 Function: bench_F: 7 pointers, 0 call sites
   PartialAlias:	i32* %arrayidx, i32* %v
   PartialAlias:	i32* %arrayidx2, i32* %v
@@ -259,7 +259,7 @@ Function: bench_F: 7 pointers, 0 call sites
   PartialAlias:	i32* %arrayidx11, i32* %arrayidx9
 Function: main: 3 pointers, 2 call sites
   NoAlias:	i8* %call, i8** %argv
-  MayAlias:	i32 (i32, i32, ...)* bitcast (i32 (...)* @benc_F to i32 (i32, i32, ...)*), i8** %argv
+  NoAlias:	i32 (i32, i32, ...)* bitcast (i32 (...)* @benc_F to i32 (i32, i32, ...)*), i8** %argv
   NoAlias:	i32 (i32, i32, ...)* bitcast (i32 (...)* @benc_F to i32 (i32, i32, ...)*), i8* %call
   Both ModRef:  Ptr: i8** %argv	<->  %call = call noalias i8* @malloc(i64 400) #3
   Both ModRef:  Ptr: i8* %call	<->  %call = call noalias i8* @malloc(i64 400) #3
@@ -271,11 +271,11 @@ Function: main: 3 pointers, 2 call sites
   Both ModRef:   %call1 = call i32 (i32, i32, ...)* bitcast (i32 (...)* @benc_F to i32 (i32, i32, ...)*)(i32 %tmp, i32 %argc) <->   %call = call noalias i8* @malloc(i64 400) #3
 ===== Alias Analysis Evaluator Report =====
   24 Total Alias Queries Performed
-  2 no alias responses (8.3%)
-  1 may alias responses (4.1%)
+  3 no alias responses (12.5%)
+  0 may alias responses (0.0%)
   15 partial alias responses (62.5%)
   6 must alias responses (25.0%)
-  Alias Analysis Evaluator Pointer Alias Summary: 8%/4%/62%/25%
+  Alias Analysis Evaluator Pointer Alias Summary: 12%/0%/62%/25%
   8 Total ModRef Queries Performed
   0 no mod/ref responses (0.0%)
   0 mod responses (0.0%)
@@ -284,10 +284,10 @@ Function: main: 3 pointers, 2 call sites
   Alias Analysis Evaluator Mod/Ref Summary: 0%/0%/0%/100%
 SRA: runOnModule: bench_G
 SRA: runOnModule: main
-NUMBER OF UNKNOWN POINTERS: 1
+NUMBER OF UNKNOWN POINTERS: 2
 19 Instrucoes
 14 Ponteiros
-8.551680e-01 Tempo
+8.551320e-01 Tempo
 Function: bench_G: 7 pointers, 0 call sites
   NoAlias:	%struct.point* %d, %struct.point* %s
   NoAlias:	%struct.point* %s, i64* %tmp
@@ -321,7 +321,7 @@ Function: main: 6 pointers, 2 call sites
   MustAlias:	%struct.point* %z, i64* %tmp1
   NoAlias:	i64* %tmp1, i8* %call
   NoAlias:	%struct.point* %tmp, i64* %tmp1
-  NoAlias:	i32 (%struct.point*, i64, ...)* bitcast (i32 (...)* @benc_G to i32 (%struct.point*, i64, ...)*), i8** %argv
+  MayAlias:	i32 (%struct.point*, i64, ...)* bitcast (i32 (...)* @benc_G to i32 (%struct.point*, i64, ...)*), i8** %argv
   NoAlias:	%struct.point* %z, i32 (%struct.point*, i64, ...)* bitcast (i32 (...)* @benc_G to i32 (%struct.point*, i64, ...)*)
   NoAlias:	i32 (%struct.point*, i64, ...)* bitcast (i32 (...)* @benc_G to i32 (%struct.point*, i64, ...)*), i8* %call
   NoAlias:	%struct.point* %tmp, i32 (%struct.point*, i64, ...)* bitcast (i32 (...)* @benc_G to i32 (%struct.point*, i64, ...)*)
@@ -342,11 +342,11 @@ Function: main: 6 pointers, 2 call sites
   Both ModRef:   %call1 = call i32 (%struct.point*, i64, ...)* bitcast (i32 (...)* @benc_G to i32 (%struct.point*, i64, ...)*)(%struct.point* %tmp, i64 %tmp2) <->   %call = call noalias i8* @malloc(i64 8) #3
 ===== Alias Analysis Evaluator Report =====
   36 Total Alias Queries Performed
-  30 no alias responses (83.3%)
-  0 may alias responses (0.0%)
+  29 no alias responses (80.5%)
+  1 may alias responses (2.7%)
   0 partial alias responses (0.0%)
   6 must alias responses (16.6%)
-  Alias Analysis Evaluator Pointer Alias Summary: 83%/0%/0%/16%
+  Alias Analysis Evaluator Pointer Alias Summary: 80%/2%/0%/16%
   14 Total ModRef Queries Performed
   4 no mod/ref responses (28.5%)
   0 mod responses (0.0%)
@@ -360,7 +360,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 2
 25 Instrucoes
 11 Ponteiros
-9.034160e-01 Tempo
+9.022520e-01 Tempo
 Function: bench_H: 4 pointers, 0 call sites
   MayAlias:	i32* %d, i32* %s
   MayAlias:	i32* %arrayidx, i32* %d
@@ -419,7 +419,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 3
 39 Instrucoes
 12 Ponteiros
-9.691200e-01 Tempo
+9.873120e-01 Tempo
 Function: bench_I: 7 pointers, 0 call sites
   PartialAlias:	i32** %arrayidx, i32** %v
   MayAlias:	i32* %tmp, i32** %v
@@ -473,7 +473,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 1
 34 Instrucoes
 9 Ponteiros
-8.479870e-01 Tempo
+8.676810e-01 Tempo
 Function: bench_J: 4 pointers, 0 call sites
   PartialAlias:	i8* %arrayidx, i8* %p
   NoAlias:	i8* %arrayidx2, i8* %p
@@ -512,7 +512,7 @@ SRA: runOnModule: main
 NUMBER OF UNKNOWN POINTERS: 1
 32 Instrucoes
 12 Ponteiros
-8.699460e-01 Tempo
+8.591010e-01 Tempo
 Function: bench_K: 7 pointers, 2 call sites
   NoAlias:	i8* %call, i8* %v
   NoAlias:	i8* %call1, i8* %v
@@ -578,10 +578,10 @@ Function: main: 3 pointers, 2 call sites
   Alias Analysis Evaluator Mod/Ref Summary: 16%/0%/0%/83%
 SRA: runOnModule: bench_L
 SRA: runOnModule: main
-NUMBER OF UNKNOWN POINTERS: 2
+NUMBER OF UNKNOWN POINTERS: 1
 24 Instrucoes
 14 Ponteiros
-8.564100e-01 Tempo
+8.611490e-01 Tempo
 Function: bench_L: 10 pointers, 0 call sites
   NoAlias:	i32* %add.ptr, i32* %v
   NoAlias:	i32* %add.ptr1, i32* %v
@@ -602,7 +602,7 @@ Function: bench_L: 10 pointers, 0 call sites
   MayAlias:	i32* %SSIfy_sigma3, i32* %add.ptr
   NoAlias:	i32* %SSIfy_sigma3, i32* %add.ptr1
   MayAlias:	i32* %SSIfy_sigma3, i32* %i.0
-  MayAlias:	i32* %SSIfy_sigma3, i32* %incdec.ptr
+  NoAlias:	i32* %SSIfy_sigma3, i32* %incdec.ptr
   NoAlias:	i32* %SSIfy_sigma, i32* %SSIfy_sigma3
   NoAlias:	i32* %i.1, i32* %v
   MayAlias:	i32* %add.ptr, i32* %i.1
@@ -630,7 +630,7 @@ Function: bench_L: 10 pointers, 0 call sites
   NoAlias:	i32* %SSIfy_sigma5, i32* %incdec.ptr5
 Function: main: 3 pointers, 2 call sites
   NoAlias:	i8* %call, i8** %argv
-  MayAlias:	i32 (i32, ...)* bitcast (i32 (...)* @benc_L to i32 (i32, ...)*), i8** %argv
+  NoAlias:	i32 (i32, ...)* bitcast (i32 (...)* @benc_L to i32 (i32, ...)*), i8** %argv
   NoAlias:	i32 (i32, ...)* bitcast (i32 (...)* @benc_L to i32 (i32, ...)*), i8* %call
   Both ModRef:  Ptr: i8** %argv	<->  %call = call noalias i8* @malloc(i64 400) #3
   Both ModRef:  Ptr: i8* %call	<->  %call = call noalias i8* @malloc(i64 400) #3
@@ -642,11 +642,11 @@ Function: main: 3 pointers, 2 call sites
   Both ModRef:   %call1 = call i32 (i32, ...)* bitcast (i32 (...)* @benc_L to i32 (i32, ...)*)(i32 %tmp) <->   %call = call noalias i8* @malloc(i64 400) #3
 ===== Alias Analysis Evaluator Report =====
   48 Total Alias Queries Performed
-  28 no alias responses (58.3%)
-  20 may alias responses (41.6%)
+  30 no alias responses (62.5%)
+  18 may alias responses (37.5%)
   0 partial alias responses (0.0%)
   0 must alias responses (0.0%)
-  Alias Analysis Evaluator Pointer Alias Summary: 58%/41%/0%/0%
+  Alias Analysis Evaluator Pointer Alias Summary: 62%/37%/0%/0%
   8 Total ModRef Queries Performed
   0 no mod/ref responses (0.0%)
   0 mod responses (0.0%)

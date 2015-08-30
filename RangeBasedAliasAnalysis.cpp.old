@@ -93,34 +93,15 @@ RangeBasedAliasAnalysis::alias(const Location &LocA, const Location &LocB)
   //errs() << *(rp1->getPointer()) << "\n";
   //errs() << *(rp2->getPointer()) << "\n";
   
-  /// Local evaluation
-  // TODO: check for improvements
-  if(rp1->LocalTree == rp2->LocalTree)
+  /// Phase 1 evaluation
+  
+  if(rp1->phase1_base == rp2->phase1_base)
   {
-    int index = -1;
-    RangedPointer* ancestor = NULL;
-    for(auto i : rp1->Path)
-    {
-      if(index > -1 and i.second.first > index)
-      {
-        continue;
-      }
-      else if(rp2->Path.count(i.first))
-      {  
-        if(index == -1 or i.second.first < index)
-        {
-         index = i.second.first;
-         ancestor = i.first;
-        }
-      } 
-    }
-    
-    //eval
     Expr ex = 
-      //higher(rp1->Path[ancestor].second->getLower(), rp2->Path[ancestor].second->getUpper()) ||
-      //lower(rp1->Path[ancestor].second->getUpper(), rp2->Path[ancestor].second->getLower());
-      rp1->Path[ancestor].second->getLower() > rp2->Path[ancestor].second->getUpper() ||
-      rp1->Path[ancestor].second->getUpper() < rp2->Path[ancestor].second->getLower();
+      //higher(rp1->phase1_offset->getLower(), rp2->phase1_offset->getUpper()) ||
+      //lower(rp1->phase1_offset->getUpper(), rp2->phase1_offset->getLower());
+      rp1->phase1_offset->getLower() > rp2->phase1_offset->getUpper() ||
+      rp1->phase1_offset->getUpper() < rp2->phase1_offset->getLower();
     if(ex.isEQ(Expr::getTrue(*SI)))
     {
       //errs() << "-----------NoAlias------------\n";
@@ -128,7 +109,7 @@ RangeBasedAliasAnalysis::alias(const Location &LocA, const Location &LocB)
     }
   }
   
-  /// Global evaluation
+  /// Phase 2 evaluation
   
   if(eval(rp1,rp2))
   {

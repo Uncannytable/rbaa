@@ -1,14 +1,9 @@
 #ifndef __RANGE_BASED_ALIAS_ANALYSIS_H__
 #define __RANGE_BASED_ALIAS_ANALYSIS_H__
 #include "RangeBasedPointerAnalysis.h"
-#include "Primitives.h"
-#include "Address.h"
-#include "Narrowing.h"
-#include "RangedPointer.h"
 #include "llvm/Analysis/Passes.h"
 #include "llvm/Analysis/AliasAnalysis.h"
 #include "llvm/Pass.h"
-
 
 namespace llvm
 {
