@@ -41,6 +41,8 @@ class Address
   std::map<RangedPointer*, Range> expanded;
   std::map<const Value*, NarrowingOp*> Narrowing_Ops;
   
+  bool argument;
+  
   Address(RangedPointer* addressee, RangedPointer* base, Range* offset);
   Address(Address*);
   ~Address();

@@ -55,7 +55,12 @@ bool RangeBasedAliasAnalysis::eval(RangedPointer* rp1, RangedPointer* rp2)
       errs() << "\n";*/
       
       bool disjoint = false;
-      if( ai->getBase()->getPointerType() == RangedPointer::Alloc
+      if( (ai->argument and !(aj->argument)) 
+      	or (aj->argument and !(ai->argument)) )
+      {
+      	disjoint = true;
+      }
+      else if( ai->getBase()->getPointerType() == RangedPointer::Alloc
       and aj->getBase()->getPointerType() == RangedPointer::Alloc
       and ai->getBase() != aj->getBase())
       {

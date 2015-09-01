@@ -211,6 +211,8 @@ void RangedPointer::processInitialAddresses(RangeBasedPointerAnalysis* analysis)
           }
         }
       }
+      
+      
     }
   }
   else if(isa<const AllocaInst>(*Pointer))
