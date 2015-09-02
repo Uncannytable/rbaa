@@ -681,7 +681,8 @@ void RangeBasedPointerAnalysis::loadStoreConnect()
 }
 
 // Finds sccs in the dependence graph
-std::map<int,std::pair<RangedPointer*, int> > RangeBasedPointerAnalysis::findSCCs()
+std::map<int,std::pair<RangedPointer*, int> > 
+  RangeBasedPointerAnalysis::findSCCs()
 {
 	std::deque<RangedPointer*> dq;
   for(auto i : RangedPointers)

@@ -169,6 +169,7 @@ void RangedPointer::processGEP( RangedPointer* base, const Use* idx_begin, const
 //Creates the pointer's addresses and defines it's type
 void RangedPointer::processInitialAddresses(RangeBasedPointerAnalysis* analysis)
 {
+  errs() << *Pointer << "\n";
   if(isa<const GlobalVariable>(*Pointer))
   {
     //errs() << "Global Variable.\n";
@@ -183,7 +184,7 @@ void RangedPointer::processInitialAddresses(RangeBasedPointerAnalysis* analysis)
     }
     else
     {
-      //errs() << "Argument Parameter.\n";
+      errs() << "Argument Parameter.\n";
       PointerType = Phi;
       const Function* F = p->getParent();
       for(auto ui = F->user_begin(), ue = F->user_end(); ui != ue; ui++)
@@ -198,7 +199,9 @@ void RangedPointer::processInitialAddresses(RangeBasedPointerAnalysis* analysis)
             /// create address
             RangedPointer* Base = analysis->getRangedPointer
               (caller->getArgOperand(ano));
+            errs() << "Base: "<< Base << "\n";
             new Address(this, Base, new Range(Expr(*SI, 0),Expr(*SI, 0)) );
+            errs() << "x\n";
           }
           else
           {
