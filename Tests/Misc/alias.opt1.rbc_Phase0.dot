@@ -1,0 +1,27 @@
+digraph grafico {
+"printf_0x2d4f920" [shape=square];
+".str_0x2d503e8" [shape=square];
+"add.ptr_0x2d53690" [shape=ellipse];
+"call_0x2d538b0" -> "add.ptr_0x2d53690" [label="[16, 16]",color=red];
+"  %0 = bitcast i8* %add.ptr to i32*_0x2d53708" [shape=ellipse];
+"add.ptr_0x2d53690" -> "  %0 = bitcast i8* %add.ptr to i32*_0x2d53708" [label="[0, 0]",color=red];
+"i8* getelementptr inbounds ([18 x i8]* @.str, i64 0, i64 0)_0x2d537a8" [shape=ellipse];
+".str_0x2d503e8" -> "i8* getelementptr inbounds ([18 x i8]* @.str, i64 0, i64 0)_0x2d537a8" [label="[0, 0]",color=red];
+"call_0x2d538b0" [shape=square];
+"tmp_0x2d53928" [shape=ellipse];
+"call_0x2d538b0" -> "tmp_0x2d53928" [label="[0, 0]",color=red];
+"add.ptr1_0x2d53cc0" [shape=ellipse];
+"call_0x2d538b0" -> "add.ptr1_0x2d53cc0" [label="[24, 24]",color=red];
+"  %1 = bitcast i8* %add.ptr1 to i32*_0x2d53d38" [shape=ellipse];
+"add.ptr1_0x2d53cc0" -> "  %1 = bitcast i8* %add.ptr1 to i32*_0x2d53d38" [label="[0, 0]",color=red];
+"p2.0_0x2d53e00" [shape=diamond];
+"  %1 = bitcast i8* %add.ptr1 to i32*_0x2d53d38" -> "p2.0_0x2d53e00" [label="[0, 0]"];
+"incdec.ptr_0x2d542c0" -> "p2.0_0x2d53e00" [label="[0, 0]"];
+"SSIfy_sigma_0x2d54130" [shape=diamond];
+"p2.0_0x2d53e00" -> "SSIfy_sigma_0x2d54130" [label="[0, 0]N{>, 0x2d53708+[0, 0]]}"];
+"incdec.ptr_0x2d542c0" [shape=ellipse];
+"SSIfy_sigma_0x2d54130" -> "incdec.ptr_0x2d542c0" [label="[-1, -1]",color=red];
+"malloc_0x2d5d990" [shape=square];
+"i8* %0_0x5425400" [shape=diamond];
+"i8* getelementptr inbounds ([18 x i8]* @.str, i64 0, i64 0)_0x2d537a8" -> "i8* %0_0x5425400" [label="[0, 0]"];
+}
