@@ -56,6 +56,11 @@ Address::Address(RangedPointer* addressee, RangedPointer* base, Range* offset)
   widened = false;
   Addressee->Addresses.insert(this);
   Base->Bases.insert(this);
+  
+  if(isa<const Argument>(*(Base->getPointer())))
+  	argument = true;
+  else
+  	argument = false;
 }
 
 Address::Address(Address* copy)
@@ -67,6 +72,8 @@ Address::Address(Address* copy)
   widened = copy->widened;
   Addressee->Addresses.insert(this);
   Base->Bases.insert(this);
+  
+  argument = copy->argument;
 }
 
 Address::~Address()
@@ -136,6 +143,9 @@ void Address::Expand(std::deque<Address*> &ad, std::set<Address*> &fn)
       //if(Addressee == Base) std::cout << "CASE\n";
       Address* NewAddress = new Address(Addressee, (*i)->Base, 
       new Range(r.getLower(), r.getUpper()) );
+      
+      if(argument) NewAddress->argument = true;
+      else if((*i)->argument) NewAddress->argument = true;
       
       NewAddress->expanded = expanded;
       NewAddress->expanded.insert(

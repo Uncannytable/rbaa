@@ -2,7 +2,7 @@ SRA: runOnModule: bench_A
 NUMBER OF UNKNOWN POINTERS: 1
 17 Instrucoes
 3 Ponteiros
-6.546390e-01 Tempo
+9.035570e-01 Tempo
 Function: bench_A: 3 pointers, 0 call sites
   NoAlias:	i32* %a, i32* %arrayidx
   NoAlias:	i32* %a, i32* %arrayidx3
@@ -19,7 +19,7 @@ SRA: runOnModule: bench_B
 NUMBER OF UNKNOWN POINTERS: 1
 20 Instrucoes
 3 Ponteiros
-6.903140e-01 Tempo
+1.089596e+00 Tempo
 Function: bench_B: 3 pointers, 0 call sites
   PartialAlias:	i32* %add.ptr, i32* %v
   NoAlias:	i32* %add.ptr1, i32* %v
@@ -36,7 +36,7 @@ SRA: runOnModule: bench_C
 NUMBER OF UNKNOWN POINTERS: 2
 26 Instrucoes
 10 Ponteiros
-6.573290e-01 Tempo
+6.802240e-01 Tempo
 Function: bench_C: 10 pointers, 0 call sites
   NoAlias:	%struct.array* %src, i32* %src.coerce1
   NoAlias:	i32* %src.coerce1, { i64, i32* }* %tmp
@@ -59,14 +59,14 @@ Function: bench_C: 10 pointers, 0 call sites
   NoAlias:	i32** %v, i64* %tmp1
   NoAlias:	i32** %tmp2, i32** %v
   NoAlias:	i32* %s, i32** %v
-  MayAlias:	i32* %src.coerce1, i32* %tmp4
+  NoAlias:	i32* %src.coerce1, i32* %tmp4
   NoAlias:	%struct.array* %src, i32* %tmp4
   NoAlias:	i32* %tmp4, { i64, i32* }* %tmp
   NoAlias:	i32* %tmp4, i64* %tmp1
   NoAlias:	i32* %tmp4, i32** %tmp2
   NoAlias:	i32* %s, i32* %tmp4
   NoAlias:	i32* %tmp4, i32** %v
-  MayAlias:	i32* %arrayidx, i32* %src.coerce1
+  NoAlias:	i32* %arrayidx, i32* %src.coerce1
   NoAlias:	%struct.array* %src, i32* %arrayidx
   NoAlias:	i32* %arrayidx, { i64, i32* }* %tmp
   NoAlias:	i32* %arrayidx, i64* %tmp1
@@ -85,17 +85,17 @@ Function: bench_C: 10 pointers, 0 call sites
   NoAlias:	i32* %acc, i32* %arrayidx
 ===== Alias Analysis Evaluator Report =====
   45 Total Alias Queries Performed
-  36 no alias responses (80.0%)
-  2 may alias responses (4.4%)
+  38 no alias responses (84.4%)
+  0 may alias responses (0.0%)
   1 partial alias responses (2.2%)
   6 must alias responses (13.3%)
-  Alias Analysis Evaluator Pointer Alias Summary: 80%/4%/2%/13%
+  Alias Analysis Evaluator Pointer Alias Summary: 84%/0%/2%/13%
   Alias Analysis Mod/Ref Evaluator Summary: no mod/ref!
 SRA: runOnModule: bench_D
 NUMBER OF UNKNOWN POINTERS: 1
 21 Instrucoes
 3 Ponteiros
-6.786860e-01 Tempo
+6.626120e-01 Tempo
 Function: bench_D: 3 pointers, 0 call sites
   PartialAlias:	i32* %arrayidx, i32* %v
   PartialAlias:	i32* %arrayidx3, i32* %v
@@ -112,7 +112,7 @@ SRA: runOnModule: bench_E
 NUMBER OF UNKNOWN POINTERS: 1
 15 Instrucoes
 3 Ponteiros
-6.565210e-01 Tempo
+6.404540e-01 Tempo
 Function: bench_E: 3 pointers, 0 call sites
   PartialAlias:	i32* %arrayidx, i32* %v
   NoAlias:	i32* %arrayidx2, i32* %v
@@ -129,7 +129,7 @@ SRA: runOnModule: bench_F
 NUMBER OF UNKNOWN POINTERS: 1
 28 Instrucoes
 7 Ponteiros
-6.618240e-01 Tempo
+6.434410e-01 Tempo
 Function: bench_F: 7 pointers, 0 call sites
   PartialAlias:	i32* %arrayidx, i32* %v
   PartialAlias:	i32* %arrayidx2, i32* %v
@@ -164,7 +164,7 @@ SRA: runOnModule: bench_G
 NUMBER OF UNKNOWN POINTERS: 1
 12 Instrucoes
 7 Ponteiros
-6.629350e-01 Tempo
+6.648910e-01 Tempo
 Function: bench_G: 7 pointers, 0 call sites
   NoAlias:	%struct.point* %d, %struct.point* %s
   NoAlias:	%struct.point* %s, i64* %tmp
@@ -199,7 +199,7 @@ SRA: runOnModule: bench_H
 NUMBER OF UNKNOWN POINTERS: 2
 15 Instrucoes
 4 Ponteiros
-7.013610e-01 Tempo
+6.857500e-01 Tempo
 Function: bench_H: 4 pointers, 0 call sites
   MayAlias:	i32* %d, i32* %s
   MayAlias:	i32* %arrayidx, i32* %d
@@ -219,42 +219,42 @@ SRA: runOnModule: bench_I
 NUMBER OF UNKNOWN POINTERS: 3
 33 Instrucoes
 7 Ponteiros
-7.381630e-01 Tempo
+7.416040e-01 Tempo
 Function: bench_I: 7 pointers, 0 call sites
   PartialAlias:	i32** %arrayidx, i32** %v
-  MayAlias:	i32* %tmp, i32** %v
-  MayAlias:	i32* %tmp, i32** %arrayidx
+  NoAlias:	i32* %tmp, i32** %v
+  NoAlias:	i32* %tmp, i32** %arrayidx
   NoAlias:	i32** %arrayidx2, i32** %v
   NoAlias:	i32** %arrayidx, i32** %arrayidx2
-  MayAlias:	i32* %tmp, i32** %arrayidx2
-  MayAlias:	i32* %tmp1, i32** %v
-  MayAlias:	i32* %tmp1, i32** %arrayidx
+  NoAlias:	i32* %tmp, i32** %arrayidx2
+  NoAlias:	i32* %tmp1, i32** %v
+  NoAlias:	i32* %tmp1, i32** %arrayidx
   MayAlias:	i32* %tmp, i32* %tmp1
-  MayAlias:	i32* %tmp1, i32** %arrayidx2
-  MayAlias:	i32* %arrayidx7, i32** %v
-  MayAlias:	i32* %arrayidx7, i32** %arrayidx
+  NoAlias:	i32* %tmp1, i32** %arrayidx2
+  NoAlias:	i32* %arrayidx7, i32** %v
+  NoAlias:	i32* %arrayidx7, i32** %arrayidx
   MayAlias:	i32* %arrayidx7, i32* %tmp
-  MayAlias:	i32* %arrayidx7, i32** %arrayidx2
+  NoAlias:	i32* %arrayidx7, i32** %arrayidx2
   PartialAlias:	i32* %arrayidx7, i32* %tmp1
-  MayAlias:	i32* %arrayidx9, i32** %v
-  MayAlias:	i32* %arrayidx9, i32** %arrayidx
+  NoAlias:	i32* %arrayidx9, i32** %v
+  NoAlias:	i32* %arrayidx9, i32** %arrayidx
   PartialAlias:	i32* %arrayidx9, i32* %tmp
-  MayAlias:	i32* %arrayidx9, i32** %arrayidx2
+  NoAlias:	i32* %arrayidx9, i32** %arrayidx2
   MayAlias:	i32* %arrayidx9, i32* %tmp1
   MayAlias:	i32* %arrayidx7, i32* %arrayidx9
 ===== Alias Analysis Evaluator Report =====
   21 Total Alias Queries Performed
-  2 no alias responses (9.5%)
-  16 may alias responses (76.1%)
+  14 no alias responses (66.6%)
+  4 may alias responses (19.0%)
   3 partial alias responses (14.2%)
   0 must alias responses (0.0%)
-  Alias Analysis Evaluator Pointer Alias Summary: 9%/76%/14%/0%
+  Alias Analysis Evaluator Pointer Alias Summary: 66%/19%/14%/0%
   Alias Analysis Mod/Ref Evaluator Summary: no mod/ref!
 SRA: runOnModule: bench_J
 NUMBER OF UNKNOWN POINTERS: 1
 28 Instrucoes
 4 Ponteiros
-6.675000e-01 Tempo
+6.521270e-01 Tempo
 Function: bench_J: 4 pointers, 0 call sites
   PartialAlias:	i8* %arrayidx, i8* %p
   NoAlias:	i8* %arrayidx2, i8* %p
@@ -274,7 +274,7 @@ SRA: runOnModule: bench_K
 NUMBER OF UNKNOWN POINTERS: 1
 26 Instrucoes
 8 Ponteiros
-6.577610e-01 Tempo
+6.478590e-01 Tempo
 Function: bench_K: 7 pointers, 2 call sites
   NoAlias:	i8* %call, i8* %v
   NoAlias:	i8* %call1, i8* %v
@@ -330,7 +330,7 @@ SRA: runOnModule: bench_L
 NUMBER OF UNKNOWN POINTERS: 1
 20 Instrucoes
 10 Ponteiros
-6.751150e-01 Tempo
+6.389680e-01 Tempo
 Function: bench_L: 10 pointers, 0 call sites
   NoAlias:	i32* %add.ptr, i32* %v
   NoAlias:	i32* %add.ptr1, i32* %v

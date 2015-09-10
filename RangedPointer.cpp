@@ -169,6 +169,7 @@ void RangedPointer::processGEP( RangedPointer* base, const Use* idx_begin, const
 //Creates the pointer's addresses and defines it's type
 void RangedPointer::processInitialAddresses(RangeBasedPointerAnalysis* analysis)
 {
+  //errs() << *Pointer << "\n";
   if(isa<const GlobalVariable>(*Pointer))
   {
     //errs() << "Global Variable.\n";
@@ -198,7 +199,8 @@ void RangedPointer::processInitialAddresses(RangeBasedPointerAnalysis* analysis)
             /// create address
             RangedPointer* Base = analysis->getRangedPointer
               (caller->getArgOperand(ano));
-            new Address(this, Base, new Range(Expr(*SI, 0),Expr(*SI, 0)) );
+            if(Base != NULL) 
+            	new Address(this, Base, new Range(Expr(*SI, 0),Expr(*SI, 0)) );
           }
           else
           {
@@ -211,6 +213,8 @@ void RangedPointer::processInitialAddresses(RangeBasedPointerAnalysis* analysis)
           }
         }
       }
+      
+      
     }
   }
   else if(isa<const AllocaInst>(*Pointer))
@@ -424,6 +428,8 @@ bool RangedPointer::isEvil()
   return false;
 }
 
+// This functions gets the path to the root of the local tree in which the 
+// pointer resides
 void RangedPointer::getUniquePath()
 {
   RangedPointer* current = this;
@@ -436,6 +442,17 @@ void RangedPointer::getUniquePath()
     {
       Address* addr = *(current->Addresses.begin());
       current = addr->getBase();
+      if(Path.count(current))
+      {
+      	//This means that the local tree is actually a lonely loop
+      	// so the local tree's root will be the pointer with the highest address
+      	RangedPointer* root = NULL;
+      	for(auto i : Path){
+      		if(root < i.first) root = i.first;
+      	}
+      	LocalTree = root;
+      	break;
+      }
       index++;
       range = new Range(range->getLower()+addr->getOffset()->getLower(),
         range->getUpper()+addr->getOffset()->getUpper()); 
