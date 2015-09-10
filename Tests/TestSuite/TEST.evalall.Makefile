@@ -1,9 +1,9 @@
-##===- TEST.evalscev.Makefile -----------------------------*- Makefile -*-===##
+##===- TEST.evalbasic.Makefile -----------------------------*- Makefile -*-===##
 #
 # Usage: 
-#     make TEST=evalscev (detailed list with time passes, etc.)
-#     make TEST=evalscev report
-#     make TEST=evalscev report.html
+#     make TEST=evalbasic (detailed list with time passes, etc.)
+#     make TEST=evalbasic report
+#     make TEST=evalbasic report.html
 #
 ##===----------------------------------------------------------------------===##
 
@@ -21,12 +21,12 @@ test.$(TEST).%: Output/%.$(TEST).report.txt
 
 $(PROGRAMS_TO_TEST:%=Output/%.$(TEST).report.txt):  \
 Output/%.$(TEST).report.txt: Output/%.linked.rbc $(LOPT) \
-	$(PROJ_SRC_ROOT)/TEST.evalscev.Makefile 
+	$(PROJ_SRC_ROOT)/TEST.evalbasic.Makefile 
 	$(VERB) $(RM) -f $@
 	@echo "---------------------------------------------------------------" >> $@
 	@echo ">>> ========= '$(RELDIR)/$*' Program" >> $@
 	@echo "---------------------------------------------------------------" >> $@
 	@~/Ecosoc/llvm-3.5.0/lib/Ecosoc/llvm-sra/SAGE/bin/sage-opt -load SSIfy.so -mem2reg -instnamer -break-crit-edges -ssify -set 1000  $< -o $<.ssify.bc 2>>$@
-	@~/Ecosoc/llvm-3.5.0/lib/Ecosoc/llvm-sra/SAGE/bin/sage-opt -load Python.so -load SAGE.so -load SRA.so -load RangeBasedAliasAnalysis.so -redef -basicaa -scev-aa -aa-eval $<.ssify.bc -o $<.redef.bc 2>>$@ 
+	@~/Ecosoc/llvm-3.5.0/lib/Ecosoc/llvm-sra/SAGE/bin/sage-opt -load Python.so -load SAGE.so -load SRA.so -load RangeBasedAliasAnalysis.so -redef -basicaa -libcall-aa -objc-arc-aa -scev-aa -tbaa -aa-eval $<.ssify.bc -o $<.redef.bc 2>>$@ 
 
 REPORT_DEPENDENCIES := ~/Ecosoc/llvm-3.5.0/lib/Ecosoc/llvm-sra/SAGE/bin/sage-opt
