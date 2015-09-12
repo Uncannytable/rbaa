@@ -1,0 +1,251 @@
+SRA: runOnModule: main
+SRA: runOnModule: allroots
+SRA: runOnModule: deflat
+SRA: runOnModule: HORNERS
+SRA: runOnModule: d_abs
+SRA: runOnModule: newton
+NUMBER OF UNKNOWN POINTERS: 0
+353 Instrucoes
+104 Ponteiros
+1.011831e+00 Tempo
+62 # of symbols
+352 # of all values
+248 # of all without noughts
+===== Alias Analysis Evaluator Report =====
+  974 Total Alias Queries Performed
+  777 no alias responses (79.7%)
+  197 may alias responses (20.2%)
+  0 partial alias responses (0.0%)
+  0 must alias responses (0.0%)
+  Alias Analysis Evaluator Pointer Alias Summary: 79%/20%/0%/0%
+  2260 Total ModRef Queries Performed
+  0 no mod/ref responses (0.0%)
+  0 mod responses (0.0%)
+  378 ref responses (16.7%)
+  1882 mod & ref responses (83.2%)
+  Alias Analysis Evaluator Mod/Ref Summary: 0%/0%/16%/83%
+SRA: runOnModule: archie_query
+SRA: runOnModule: defcmplink
+SRA: runOnModule: invdatecmplink
+SRA: runOnModule: translateArchieResponse
+SRA: runOnModule: main
+SRA: runOnModule: __strspn_c1
+SRA: runOnModule: __strspn_c2
+SRA: runOnModule: __strspn_c3
+SRA: runOnModule: atalloc
+SRA: runOnModule: atfree
+SRA: runOnModule: atlfree
+SRA: runOnModule: dirsend
+SRA: runOnModule: abortDirsend
+SRA: runOnModule: initDirsend
+SRA: runOnModule: retryDirsend
+SRA: runOnModule: processEvent
+SRA: runOnModule: keepWaitingDirsend
+SRA: runOnModule: timeoutProc
+SRA: runOnModule: readProc
+SRA: runOnModule: get_pauth
+SRA: runOnModule: get_vdir
+SRA: runOnModule: perrmesg
+SRA: runOnModule: sperrmesg
+SRA: runOnModule: pwarnmesg
+SRA: runOnModule: spwarnmesg
+SRA: runOnModule: display_link
+SRA: runOnModule: procquery
+SRA: runOnModule: ptalloc
+SRA: runOnModule: ptfree
+SRA: runOnModule: ptlfree
+SRA: runOnModule: stcopy
+SRA: runOnModule: stcopyr
+SRA: runOnModule: stfree
+SRA: runOnModule: wcmatch
+SRA: runOnModule: ul_insert
+SRA: runOnModule: vl_insert
+SRA: runOnModule: nlsindex
+SRA: runOnModule: month_sname
+SRA: runOnModule: sindex
+SRA: runOnModule: scan_error
+SRA: runOnModule: parse_attribute
+SRA: runOnModule: nxtline
+SRA: runOnModule: unquote
+SRA: runOnModule: vl_comp
+SRA: runOnModule: vl_equal
+SRA: runOnModule: vlalloc
+SRA: runOnModule: vlfree
+SRA: runOnModule: vllfree
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+  %asmresult1 = extractvalue { i64, i64* } %tmp, 1 -> Unknown Value
+{ i64, i64* } (i32, i64, i64*)* asm sideeffect "cld; rep; stosq", "={cx},={di},{ax},0,1,~{memory},~{dirflag},~{fpsr},~{flags}" -> Unknown Value
+%struct.servent* inttoptr (i64 -1 to %struct.servent*) -> Unknown ConstantExpr
+i16 (i16)* asm "rorw $$8, ${0:w}", "=r,0,~{cc},~{dirflag},~{fpsr},~{flags}" -> Unknown Value
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+  %cond51 = select i1 %tobool50, i8* getelementptr inbounds ([2 x i8]* @.str751, i32 0, i32 0), i8* getelementptr inbounds ([1 x i8]* @.str650, i32 0, i32 0) -> Unknown Value
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+  %cond11 = select i1 %tobool10, i8* getelementptr inbounds ([4 x i8]* @.str50, i32 0, i32 0), i8* getelementptr inbounds ([1 x i8]* @.str777, i32 0, i32 0) -> Unknown Value
+  %cond16 = select i1 %tmp6, i8* getelementptr inbounds ([4 x i8]* @.str50, i32 0, i32 0), i8* getelementptr inbounds ([1 x i8]* @.str777, i32 0, i32 0) -> Unknown Value
+  %cond23 = select i1 %tobool22, i8* getelementptr inbounds ([1 x i8]* @.str777, i32 0, i32 0), i8* getelementptr inbounds ([100 x i8]* @p_err_string, i32 0, i32 0) -> Unknown Value
+  %cond11 = select i1 %tobool10, i8* getelementptr inbounds ([4 x i8]* @.str50, i32 0, i32 0), i8* getelementptr inbounds ([1 x i8]* @.str777, i32 0, i32 0) -> Unknown Value
+  %cond16 = select i1 %tmp5, i8* getelementptr inbounds ([4 x i8]* @.str50, i32 0, i32 0), i8* getelementptr inbounds ([1 x i8]* @.str777, i32 0, i32 0) -> Unknown Value
+  %cond23 = select i1 %tobool22, i8* getelementptr inbounds ([1 x i8]* @.str777, i32 0, i32 0), i8* getelementptr inbounds ([100 x i8]* @p_err_string, i32 0, i32 0) -> Unknown Value
+  %cond11 = select i1 %tobool10, i8* getelementptr inbounds ([4 x i8]* @.str50, i32 0, i32 0), i8* getelementptr inbounds ([1 x i8]* @.str777, i32 0, i32 0) -> Unknown Value
+  %cond16 = select i1 %tmp6, i8* getelementptr inbounds ([4 x i8]* @.str50, i32 0, i32 0), i8* getelementptr inbounds ([1 x i8]* @.str777, i32 0, i32 0) -> Unknown Value
+  %cond23 = select i1 %tobool22, i8* getelementptr inbounds ([1 x i8]* @.str777, i32 0, i32 0), i8* getelementptr inbounds ([100 x i8]* @p_warn_string, i32 0, i32 0) -> Unknown Value
+  %cond11 = select i1 %tobool10, i8* getelementptr inbounds ([4 x i8]* @.str50, i32 0, i32 0), i8* getelementptr inbounds ([1 x i8]* @.str777, i32 0, i32 0) -> Unknown Value
+  %cond16 = select i1 %tmp5, i8* getelementptr inbounds ([4 x i8]* @.str50, i32 0, i32 0), i8* getelementptr inbounds ([1 x i8]* @.str777, i32 0, i32 0) -> Unknown Value
+  %cond23 = select i1 %tobool22, i8* getelementptr inbounds ([1 x i8]* @.str777, i32 0, i32 0), i8* getelementptr inbounds ([100 x i8]* @p_warn_string, i32 0, i32 0) -> Unknown Value
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+  %cond77 = select i1 %tobool76, i8* getelementptr inbounds ([2 x i8]* @.str4118, i32 0, i32 0), i8* getelementptr inbounds ([1 x i8]* @.str114, i32 0, i32 0) -> Unknown Value
+  %cond81 = select i1 %tobool80, i8* getelementptr inbounds ([10 x i8]* @.str1115, i32 0, i32 0), i8* getelementptr inbounds ([5 x i8]* @.str14128, i32 0, i32 0) -> Unknown Value
+  %tmp14 = inttoptr i64 %conv to i8* -> Unknown Value
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+NUMBER OF UNKNOWN POINTERS: 670
+4810 Instrucoes
+2268 Ponteiros
+3.588561e+00 Tempo
+4340 # of symbols
+13998 # of all values
+11804 # of all without noughts
+===== Alias Analysis Evaluator Report =====
+  159051 Total Alias Queries Performed
+  26142 no alias responses (16.4%)
+  132909 may alias responses (83.5%)
+  0 partial alias responses (0.0%)
+  0 must alias responses (0.0%)
+  Alias Analysis Evaluator Pointer Alias Summary: 16%/83%/0%/0%
+  70668 Total ModRef Queries Performed
+  0 no mod/ref responses (0.0%)
+  0 mod responses (0.0%)
+  4165 ref responses (5.8%)
+  66503 mod & ref responses (94.1%)
+  Alias Analysis Evaluator Mod/Ref Summary: 0%/0%/5%/94%
+SRA: runOnModule: main
+SRA: runOnModule: OUTPUT_BUFFER
+SRA: runOnModule: ADD_TO_END_OF_BUFFER
+SRA: runOnModule: PSEUDO_CODE
+SRA: runOnModule: GET_REG
+SRA: runOnModule: SET_BITS_TO
+SRA: runOnModule: PRT_CODE
+SRA: runOnModule: REAL_CODE
+SRA: runOnModule: CODE
+SRA: runOnModule: RESET_MISSING_LABEL_NAME
+SRA: runOnModule: GET_NEXT_MISSING_LABEL
+SRA: runOnModule: BLANK_STR
+SRA: runOnModule: CHAR_TO_DIGIT
+SRA: runOnModule: NUM_TO_STR
+SRA: runOnModule: PRT_NUM
+SRA: runOnModule: GET_NUM
+SRA: runOnModule: GET_EXPRESSION
+SRA: runOnModule: LOOK_UP_OP
+SRA: runOnModule: CHANGE_LOCATION
+SRA: runOnModule: CAPITALIZE_STRING
+SRA: runOnModule: PASS1
+SRA: runOnModule: PASS2
+SRA: runOnModule: PSEUDO_BYTE
+SRA: runOnModule: PSEUDO_CSECT
+SRA: runOnModule: PSEUDO_END
+SRA: runOnModule: PSEUDO_EQU
+SRA: runOnModule: PSEUDO_EXTDEF
+SRA: runOnModule: PSEUDO_EXTREF
+SRA: runOnModule: PSEUDO_RESB
+SRA: runOnModule: PSEUDO_RESW
+SRA: runOnModule: PSEUDO_START
+SRA: runOnModule: PSEUDO_WORD
+SRA: runOnModule: DO_PSEUDO
+SRA: runOnModule: INITIALIZE_RECORD
+SRA: runOnModule: PRT_RECORD
+SRA: runOnModule: ADD_TO_RECORD
+SRA: runOnModule: INITIALIZE_TEXT_RECORD
+SRA: runOnModule: PRT_TEXT_RECORD
+SRA: runOnModule: ADD_TO_TEXT_RECORD
+SRA: runOnModule: UPPER
+SRA: runOnModule: IS_ALPHA_NUM
+SRA: runOnModule: IS_BLANK_OR_TAB
+SRA: runOnModule: eoln
+SRA: runOnModule: GET_LABEL
+SRA: runOnModule: GET_OPCODE_STR
+SRA: runOnModule: SCAN_LINE
+SRA: runOnModule: GETCHR
+SRA: runOnModule: GET_LINE
+SRA: runOnModule: INIT_SYM_TAB
+SRA: runOnModule: LOOK_UP_SYMBOL
+SRA: runOnModule: INSERT_IN_SYM_TAB
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+Unknown Function Call.
+NUMBER OF UNKNOWN POINTERS: 344
+4507 Instrucoes
+1452 Ponteiros
+3.029365e+01 Tempo
+70 # of symbols
+4000 # of all values
+2309 # of all without noughts
+===== Alias Analysis Evaluator Report =====
+  35474 Total Alias Queries Performed
+  16977 no alias responses (47.8%)
+  18497 may alias responses (52.1%)
+  0 partial alias responses (0.0%)
+  0 must alias responses (0.0%)
+  Alias Analysis Evaluator Pointer Alias Summary: 47%/52%/0%/0%
+  43979 Total ModRef Queries Performed
+  0 no mod/ref responses (0.0%)
+  0 mod responses (0.0%)
+  4499 ref responses (10.2%)
+  39480 mod & ref responses (89.7%)
+  Alias Analysis Evaluator Mod/Ref Summary: 0%/0%/10%/89%
+SRA: runOnModule: yyparse
+SRA: runOnModule: main
+SRA: runOnModule: allroots
+SRA: runOnModule: main
+SRA: runOnModule: allroots
+SRA: runOnModule: deflat

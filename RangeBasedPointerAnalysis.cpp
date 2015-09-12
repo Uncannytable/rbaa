@@ -585,11 +585,38 @@ bool RangeBasedPointerAnalysis::runOnModule(Module &M)
     if(i.second->addr_empty())
       new Address(i.second, i.second, new Range(Expr(*SI, 0),Expr(*SI, 0)));
 
+	//stats for symbol proportions
+	int stat_symbols = 0;
+	int stat_all = 0;
+	int stat_allz = 0;
+	for(auto i : RangedPointers)
+  {
+		for(auto j : i.second->Addresses)
+		{
+			if(j->getOffset()->getLower().isInteger() 
+			and j->getOffset()->getUpper().isInteger())
+			{
+				if((j->getOffset()->getLower().getInteger() == 0) 
+				and (j->getOffset()->getUpper().getInteger() == 0))
+				{
+					stat_allz++;
+				}
+			}
+		
+			stat_all += 2;
+			if(!(j->getOffset()->getLower().isInteger())) stat_symbols++;
+			if(!(j->getOffset()->getUpper().isInteger())) stat_symbols++;
+		}  	
+  }
+
 	DEBUG_WITH_TYPE("phases", errs() << "Control flow reached the end.\n");
   t = clock() - t;
   errs() << ninst << " Instrucoes\n";
   errs() << npointers << " Ponteiros\n";
   errs() << (((float)t)/CLOCKS_PER_SEC) << " Tempo\n";
+  errs() << stat_symbols << " # of symbols\n";
+  errs() << stat_all << " # of all values\n";
+  errs() << (stat_all - stat_allz) << " # of all without noughts\n";
 return false;
 }
 
