@@ -590,6 +590,17 @@ bool RangeBasedPointerAnalysis::runOnModule(Module &M)
   errs() << ninst << " Instrucoes\n";
   errs() << npointers << " Ponteiros\n";
   errs() << (((float)t)/CLOCKS_PER_SEC) << " Tempo\n";
+  
+  int num = 0;
+  int all = 0;
+  for(auto i : RangedPointers)
+  {
+    for(auto j : i.second->Addresses)
+    {
+    	
+    }
+  }
+  
 return false;
 }
 

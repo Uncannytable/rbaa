@@ -68,13 +68,31 @@ bool RangeBasedAliasAnalysis::eval(RangedPointer* rp1, RangedPointer* rp2)
       }
       else if(ai->getBase() == aj->getBase())
       {
-        Expr ex = 
+        Expr ex1 = Expr::getFalse(*SI);
+				Expr ex2 = Expr::getFalse(*SI);
+				if(ai->getOffset()->getLower().isInteger() and aj->getOffset()->getUpper().isInteger())  
+					ex1 = ai->getOffset()->getLower() > aj->getOffset()->getUpper();
+				if(ai->getOffset()->getUpper().isInteger() and aj->getOffset()->getLower().isInteger())
+					ex2 = ai->getOffset()->getUpper() < aj->getOffset()->getLower();
+				
+				Expr ex = ex1 || ex2; 
           //higher(ai->getOffset()->getLower(), aj->getOffset()->getUpper()) || 
           //lower(ai->getOffset()->getUpper(), aj->getOffset()->getLower());
+        Expr ax =   
           ai->getOffset()->getLower() > aj->getOffset()->getUpper() ||
           ai->getOffset()->getUpper() < aj->getOffset()->getLower();
         if(ex.isEQ(Expr::getTrue(*SI)))
+        {
+          /*if(ax.isEQ(Expr::getFalse(*SI)))
+          {
+          	errs() << "ISSUE:\n";
+          	ai->print();
+          	errs() << "\n";
+          	aj->print();
+          	errs() << "\n";
+          } */
           disjoint = true;
+      	}
       }
       
       if(!disjoint)
@@ -121,13 +139,29 @@ RangeBasedAliasAnalysis::alias(const Location &LocA, const Location &LocB)
     }
     
     //eval
-    Expr ex = 
+    Expr ex1 = Expr::getFalse(*SI);
+    Expr ex2 = Expr::getFalse(*SI);
+    if(rp1->Path[ancestor].second->getLower().isInteger() and rp2->Path[ancestor].second->getUpper().isInteger())  
+    	ex1 = rp1->Path[ancestor].second->getLower() > rp2->Path[ancestor].second->getUpper();
+    if(rp1->Path[ancestor].second->getUpper().isInteger() and rp2->Path[ancestor].second->getLower().isInteger())
+    	ex2 = rp1->Path[ancestor].second->getUpper() < rp2->Path[ancestor].second->getLower();
+    
+    Expr ex = ex1 || ex2;
       //higher(rp1->Path[ancestor].second->getLower(), rp2->Path[ancestor].second->getUpper()) ||
       //lower(rp1->Path[ancestor].second->getUpper(), rp2->Path[ancestor].second->getLower());
+      Expr ax =   
       rp1->Path[ancestor].second->getLower() > rp2->Path[ancestor].second->getUpper() ||
       rp1->Path[ancestor].second->getUpper() < rp2->Path[ancestor].second->getLower();
     if(ex.isEQ(Expr::getTrue(*SI)))
     {
+    	/*if(ax.isEQ(Expr::getFalse(*SI)))
+      {
+      	errs() << "ISSUE:\n";
+      	errs() << rp1->Path[ancestor].second;
+      	errs() << "\n";
+      	errs() << rp2->Path[ancestor].second;
+      	errs() << "\n";
+      }*/ 
       //errs() << "-----------NoAlias------------\n";
       return NoAlias;
     }
