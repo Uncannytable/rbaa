@@ -1,5 +1,12 @@
 #define DEBUG_TYPE "range-based-aa"
 #include "RangeBasedAliasAnalysis.h"
+#include "llvm/ADT/Statistic.h"
+
+STATISTIC(SameTree, "Number of NoAlias from the same tree");
+STATISTIC(DiffRoots, "Number of NoAlias from different roots");
+STATISTIC(SameBase, "Number of Disjoint addresses from same base");
+STATISTIC(DiffBase, "Number of Disjoint addresses from diff bases");
+
 using namespace llvm;
 
 extern SAGEInterface *SI;
@@ -58,12 +65,14 @@ bool RangeBasedAliasAnalysis::eval(RangedPointer* rp1, RangedPointer* rp2)
       if( (ai->argument and !(aj->argument)) 
       	or (aj->argument and !(ai->argument)) )
       {
+      	DiffBase++;
       	disjoint = true;
       }
       else if( ai->getBase()->getPointerType() == RangedPointer::Alloc
       and aj->getBase()->getPointerType() == RangedPointer::Alloc
       and ai->getBase() != aj->getBase())
       {
+        DiffBase++;
         disjoint = true;
       }
       else if(ai->getBase() == aj->getBase())
@@ -74,7 +83,10 @@ bool RangeBasedAliasAnalysis::eval(RangedPointer* rp1, RangedPointer* rp2)
           ai->getOffset()->getLower() > aj->getOffset()->getUpper() ||
           ai->getOffset()->getUpper() < aj->getOffset()->getLower();
         if(ex.isEQ(Expr::getTrue(*SI)))
+        {
+          SameBase++;
           disjoint = true;
+        }
       }
       
       if(!disjoint)
@@ -129,6 +141,7 @@ RangeBasedAliasAnalysis::alias(const Location &LocA, const Location &LocB)
     if(ex.isEQ(Expr::getTrue(*SI)))
     {
       //errs() << "-----------NoAlias------------\n";
+      SameTree++;
       return NoAlias;
     }
   }
@@ -138,6 +151,7 @@ RangeBasedAliasAnalysis::alias(const Location &LocA, const Location &LocB)
   if(eval(rp1,rp2))
   {
     //errs() << "-----------NoAlias------------\n";
+    DiffRoots++;
     return NoAlias;
   }  
   

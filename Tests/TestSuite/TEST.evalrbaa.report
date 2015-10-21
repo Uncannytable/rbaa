@@ -20,6 +20,13 @@ $TrimRepeatedPrefix = 1;
  ["MayAlias", '([0-9.]+).*may alias responses'],
  ["PartialAlias", '([0-9.]+).*partial alias responses'],
  ["MustAlias", '([0-9.]+).*must alias responses'],
+ ["Symbols", '([0-9.]+).*# of symbols'],
+ ["All", '([0-9.]+).*# of all values'],
+ ["NoZeroes", '([0-9.]+).*# of all without noughts'],
+ ["SameTree", '([0-9.]+).*Number of NoAlias from the same tree'],
+ ["DiffRoots", '([0-9.]+).*Number of NoAlias from different roots'],
+ ["SameBase", '([0-9.]+).*Number of Disjoint addresses from same base'],
+ ["DiffBase", '([0-9.]+).*Number of Disjoint addresses from diff bases'],
  [],
  );
 
