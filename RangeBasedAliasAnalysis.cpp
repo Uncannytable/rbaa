@@ -4,6 +4,11 @@
 
 STATISTIC(SameTree, "Number of NoAlias from the same tree");
 STATISTIC(DiffRoots, "Number of NoAlias from different roots");
+
+STATISTIC(AddrCmp, "Number of addres comparisons");
+
+STATISTIC(DiffArg, "Number of Disjoint addresses from diff atg flags");
+STATISTIC(SB, "Number of address cmp from same base");
 STATISTIC(SameBase, "Number of Disjoint addresses from same base");
 STATISTIC(DiffBase, "Number of Disjoint addresses from diff bases");
 
@@ -54,7 +59,7 @@ bool RangeBasedAliasAnalysis::eval(RangedPointer* rp1, RangedPointer* rp2)
     for(auto j = rp2->addr_begin(), je = rp2->addr_end(); j != je; j++)
     {
       Address* aj = *j;
-      
+      AddrCmp++;
       /*errs() << "Compare: ";
       ai->print();
       errs() << " X ";
@@ -62,10 +67,12 @@ bool RangeBasedAliasAnalysis::eval(RangedPointer* rp1, RangedPointer* rp2)
       errs() << "\n";*/
       
       bool disjoint = false;
-      if( (ai->argument and !(aj->argument)) 
-      	or (aj->argument and !(ai->argument)) )
+      //if( (ai->argument and !(aj->argument)) 
+      //	or (aj->argument and !(ai->argument)) )
+      if(  (  ai->argument and !(aj->argument) and (aj->getBase()->getPointerType() == RangedPointer::Alloc)   ) 
+      	or (  aj->argument and !(ai->argument) and (ai->getBase()->getPointerType() == RangedPointer::Alloc)   ) )
       {
-      	DiffBase++;
+      	DiffArg++;
       	disjoint = true;
       }
       else if( ai->getBase()->getPointerType() == RangedPointer::Alloc
@@ -77,6 +84,7 @@ bool RangeBasedAliasAnalysis::eval(RangedPointer* rp1, RangedPointer* rp2)
       }
       else if(ai->getBase() == aj->getBase())
       {
+        SB++;
         Expr ex = 
           //higher(ai->getOffset()->getLower(), aj->getOffset()->getUpper()) || 
           //lower(ai->getOffset()->getUpper(), aj->getOffset()->getLower());

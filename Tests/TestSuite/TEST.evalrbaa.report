@@ -27,6 +27,9 @@ $TrimRepeatedPrefix = 1;
  ["DiffRoots", '([0-9.]+).*Number of NoAlias from different roots'],
  ["SameBase", '([0-9.]+).*Number of Disjoint addresses from same base'],
  ["DiffBase", '([0-9.]+).*Number of Disjoint addresses from diff bases'],
+ ["DiffArg", '([0-9.]+).*Number of Disjoint addresses from diff atg flags'],
+ ["AddrCmp", '([0-9.]+).*Number of addres comparisons'],
+ ["SB", '([0-9.]+).*Number of address cmp from same base'],
  [],
  );
 
