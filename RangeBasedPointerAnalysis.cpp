@@ -274,7 +274,8 @@ void RangeBasedPointerAnalysis::PreNarrowing()
   {
     if(const PHINode* phi = dyn_cast<PHINode>(i.first))
     {
-      if (phi->getName().startswith("SSIfy_sigma")) 
+      if(phi->getName().startswith("SSIfy_sigma")
+         or phi->getNumIncomingValues() == 1) 
       {
         //find branch
         BasicBlock* o_block = phi->getIncomingBlock(0);
